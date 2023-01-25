@@ -5,7 +5,7 @@ if os.path.exists("config.env"):
     load_dotenv('config.env', override=True)
 
 class Config:
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "5322393404:AAEeP6r6XoJ-AioqdBSx3kttK9OcqpEDZeo")
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "5675364230:AAGY9nLdoRn8qMaz5uq9YSp-WyTxDWWFFf0")
     API_ID = int(os.environ.get("API_ID", 15855531))
     API_HASH = os.environ.get("API_HASH", "31e0b87de4285ebff259e003f58bf469")
     DB_URL = os.environ.get("DB_URL", "mongodb+srv://Devilharsha:Devilharsha@cluster0.exwkd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
