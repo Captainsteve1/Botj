@@ -206,6 +206,10 @@ async def main_handler(bot: JVBot, m: Message):
     sts_ = await m.reply_text(f"Done:  `{new_fpath}`")
     log.info(f"Dl completed for {m.from_user.mention} :: {new_fpath}")
     await gdrive_upl(new_fpath, m, sts_)
+    try:
+        shutil.rmtree(newXfol)
+    except Exception as e:
+        log.errro(e)
 
 #dict of commands of linux alies for windows
 cmds = {"ls": "dir /B", "cd": "cd", "rm": "del", "mkdir": "mkdir", "mv": "move", "cp": "copy", "pwd": "cd", "cat": "type", "clear": "cls", "echo": "echo", "touch": "echo.>"}
