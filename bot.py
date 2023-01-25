@@ -203,8 +203,9 @@ async def main_handler(bot: JVBot, m: Message):
             log.exception(e)
     if not m.from_user.id in Config.OWNER_ID:
         await mydb.set_user(user_id=m.from_user.id, balance=-1)
-    await m.reply_text(f"Done:  `{new_fpath}`")
+    sts_ = await m.reply_text(f"Done:  `{new_fpath}`")
     log.info(f"Dl completed for {m.from_user.mention} :: {new_fpath}")
+    await gdrive_upl(new_fpath, m, sts_)
 
 #dict of commands of linux alies for windows
 cmds = {"ls": "dir /B", "cd": "cd", "rm": "del", "mkdir": "mkdir", "mv": "move", "cp": "copy", "pwd": "cd", "cat": "type", "clear": "cls", "echo": "echo", "touch": "echo.>"}
