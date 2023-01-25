@@ -88,7 +88,7 @@ class JVPrimeDl:
                 self.log.exception(e)
                 continue
         await process.wait()
-        self.log.info(process.stderr.read().decode())
+        self.log.info((await process.stderr.read()))
         await message.delete()
 
 async def get_video_duration(input_file):
