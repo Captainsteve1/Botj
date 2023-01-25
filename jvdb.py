@@ -1,11 +1,14 @@
 import motor.motor_asyncio
 from config import Config
 from datetime import datetime
+import certifi
+
+ca = certifi.where()
 
 class manage_db():
     def __init__(self):
         try:
-            self.db = motor.motor_asyncio.AsyncIOMotorClient(Config.DB_URL)["JVAmazonDl"]
+            self.db = motor.motor_asyncio.AsyncIOMotorClient(Config.DB_URL, tlsCAFile=ca)["JVAmazonDl"]
             self.user = self.db.users
         except Exception as e:
             self.user = None
