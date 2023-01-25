@@ -130,7 +130,7 @@ async def gdrive_upl(input_str, message, sts_msg, parent_id=None):
     if not os.path.exists(input_str):
         await sts_msg.edit(f"{input_str} not found")
         return
-    await sts_msg.edit(f"Uploading {os.path.basename(input_str)} to gdrive ....")
+    await sts_msg.edit(f"**Uploading** `{os.path.basename(input_str)}` **to Gdrive...**")
     check, file_url = await GdriveUploader(input_str, parent_id)
     if check:
         button = [[InlineKeyboardButton(text=" Gdrive Link ", url=f"{file_url}")]]
