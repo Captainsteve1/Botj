@@ -3,7 +3,8 @@ from googleapiclient.discovery import build
 from google.oauth2 import service_account
 import os
 import pickle
-import magic
+#import magic
+import mimetypes
 from config import Config
 import logging
 
@@ -21,9 +22,10 @@ async def get_gdrive_service():
     return build('drive', 'v3', credentials=creds)
 
 async def get_mime_type(file_path):
-    mime = magic.Magic(mime=True)
-    mime_type = mime.from_file(file_path)
-    mime_type = mime_type or "text/plain"
+    #mime = magic.Magic(mime=True)
+    #mime_type = mime.from_file(file_path)
+    #mime_type = mime_type or "text/plain"
+    mime_type = mimetypes.guess_type(file_path)[0] or "video/mp4"
     return mime_type
 
 async def create_directory(directory_name):
