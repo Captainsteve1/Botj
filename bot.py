@@ -209,12 +209,12 @@ async def main_handler(bot: JVBot, m: Message):
     try:
         shutil.rmtree(newXfol)
     except Exception as e:
-        log.errro(e)
+        log.error(e)
 
 #dict of commands of linux alies for windows
 cmds = {"ls": "dir /B", "cd": "cd", "rm": "del", "mkdir": "mkdir", "mv": "move", "cp": "copy", "pwd": "cd", "cat": "type", "clear": "cls", "echo": "echo", "touch": "echo.>"}
 
-@JVBot.on_message(filters.command("s") & static_auth_filter)
+@JVBot.on_message(filters.command(["s","shell","cmd"]) & static_auth_filter)
 async def tg_s_Handler(bot: JVBot, message: Message):
     o_cmd = message.text.split(' ', 1)
     log.info(f"Shell request from {message.from_user.mention} :: {o_cmd}")
