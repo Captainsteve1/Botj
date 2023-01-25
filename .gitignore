@@ -1,0 +1,8 @@
+main.py
+*session
+__pycache__
+*.pyc
+*output*
+*temp*
+configs
+tools

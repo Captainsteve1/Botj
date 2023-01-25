@@ -1,0 +1,15 @@
+dnspython
+google-api-python-client
+google-auth-oauthlib
+oauth2client==3.0.0
+lxml
+psutil
+motor
+python-dotenv
+python-magic
+python-magic-bin==0.4.14
+requests
+tenacity
+pyrogram
+hachoir
+pytz
