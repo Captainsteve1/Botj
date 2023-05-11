@@ -180,7 +180,7 @@ async def tg_unauth_Handler(bot: JVBot, message: Message):
 
 @JVBot.on_message(filters.command("dl", prefixes=[".", "/", "#"]))
 async def main_handler(bot: JVBot, m: Message):
-    cmd = "wv " + m.text.split(" ", 1)[1]
+    cmd = "python3 wv.py " + m.text.split(" ", 1)[1]
     log.info("Dl request from:", m.from_user.mention, "::", cmd)
     Xfol = f"{m.from_user.id}_temp_{time()}"
     cmd += f" -o {Xfol}"
