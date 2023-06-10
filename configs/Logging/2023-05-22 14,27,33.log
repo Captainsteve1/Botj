@@ -1,0 +1,3 @@
+2023-05-22 19:57:34,201 - helpers.Utils.ProxyHandler - INFO - Getting IP...
+2023-05-22 19:57:34,229 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): ipinfo.io:443
+2023-05-22 19:57:34,733 - urllib3.connectionpool - DEBUG - https://ipinfo.io:443 "GET /json HTTP/1.1" 200 None

@@ -1,0 +1,206 @@
+2023-05-22 20:02:17,099 - helpers.Utils.ProxyHandler - INFO - Getting IP...
+2023-05-22 20:02:17,101 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): ipinfo.io:443
+2023-05-22 20:02:17,547 - urllib3.connectionpool - DEBUG - https://ipinfo.io:443 "GET /json HTTP/1.1" 200 None
+2023-05-22 20:02:20,251 - urllib3.util.retry - DEBUG - Converted retries value: 5 -> Retry(total=5, connect=None, read=None, redirect=None, status=None)
+2023-05-22 20:02:20,264 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.netflix.com:443
+2023-05-22 20:02:23,421 - urllib3.connectionpool - DEBUG - https://www.netflix.com:443 "GET /browse HTTP/1.1" 200 None
+2023-05-22 20:02:24,429 - services.netflix - INFO - Getting Metadata...
+2023-05-22 20:02:24,431 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.netflix.com:443
+2023-05-22 20:02:26,269 - urllib3.connectionpool - DEBUG - https://www.netflix.com:443 "GET /nq/website/memberapi/v074af8b7/metadata?movieid=80014749&drmSystem=widevine&isWatchlistEnabled=false&isShortformEnabled=false&isVolatileBillboardsEnabled=false&languages=en HTTP/1.1" 200 None
+2023-05-22 20:02:26,581 - titlecase - DEBUG - Rick and Morty
+2023-05-22 20:02:26,582 - titlecase - DEBUG - Pilot
+2023-05-22 20:02:26,582 - titlecase - DEBUG - Lawnmower Dog
+2023-05-22 20:02:26,582 - titlecase - DEBUG - Anatomy Park
+2023-05-22 20:02:26,582 - titlecase - DEBUG - Shaym
+2023-05-22 20:02:26,583 - titlecase - DEBUG - Aliens!
+2023-05-22 20:02:26,583 - titlecase - DEBUG - M. Night Shaym-Aliens!
+2023-05-22 20:02:26,583 - titlecase - DEBUG - Meeseeks and Destroy
+2023-05-22 20:02:26,583 - titlecase - DEBUG - Rick Potion #9
+2023-05-22 20:02:26,583 - titlecase - DEBUG - Raising Gazorpazorp
+2023-05-22 20:02:26,584 - titlecase - DEBUG - Rixty Minutes
+2023-05-22 20:02:26,584 - titlecase - DEBUG - Something Ricked This Way Comes
+2023-05-22 20:02:26,584 - titlecase - DEBUG - Rick
+2023-05-22 20:02:26,584 - titlecase - DEBUG - Counters
+2023-05-22 20:02:26,584 - titlecase - DEBUG - Close Rick-Counters of the Rick Kind
+2023-05-22 20:02:26,585 - titlecase - DEBUG - Ricksy Business
+2023-05-22 20:02:26,585 - titlecase - DEBUG - A Rickle in Time
+2023-05-22 20:02:26,585 - titlecase - DEBUG - Mortynight Run
+2023-05-22 20:02:26,585 - titlecase - DEBUG - Auto Erotic Assimilation
+2023-05-22 20:02:26,586 - titlecase - DEBUG - Total Rickall
+2023-05-22 20:02:26,586 - titlecase - DEBUG - Get Schwifty
+2023-05-22 20:02:26,586 - titlecase - DEBUG - The Ricks Must Be Crazy
+2023-05-22 20:02:26,586 - titlecase - DEBUG - Big Trouble in Little Sanchez
+2023-05-22 20:02:26,587 - titlecase - DEBUG - Interdimensional Cable 2 Tempting Fate
+2023-05-22 20:02:26,587 - titlecase - DEBUG - Look Whos Purging Now
+2023-05-22 20:02:26,587 - titlecase - DEBUG - The Wedding Squanchers
+2023-05-22 20:02:26,587 - titlecase - DEBUG - The Rickshank Rickdemption
+2023-05-22 20:02:26,587 - titlecase - DEBUG - Rickmancing the Stone
+2023-05-22 20:02:26,588 - titlecase - DEBUG - Pickle Rick
+2023-05-22 20:02:26,588 - titlecase - DEBUG - Vindicators 3 the Return of Worldender
+2023-05-22 20:02:26,588 - titlecase - DEBUG - The Whirly Dirly Conspiracy
+2023-05-22 20:02:26,588 - titlecase - DEBUG - Rest and Ricklaxation
+2023-05-22 20:02:26,589 - titlecase - DEBUG - The Ricklantis Mixup
+2023-05-22 20:02:26,589 - titlecase - DEBUG - Mortys Mind Blowers
+2023-05-22 20:02:26,589 - titlecase - DEBUG - The ABCs of Beth
+2023-05-22 20:02:26,589 - titlecase - DEBUG - The Rickchurian Mortydate
+2023-05-22 20:02:26,589 - titlecase - DEBUG - Edge of Tomorty Rick Die Rickpeat
+2023-05-22 20:02:26,590 - titlecase - DEBUG - The Old Man and the Seat
+2023-05-22 20:02:26,590 - titlecase - DEBUG - One Crew Over the Crewcoos Morty
+2023-05-22 20:02:26,590 - titlecase - DEBUG - Claw and Hoarder Special Ricktims Morty
+2023-05-22 20:02:26,591 - titlecase - DEBUG - Rattlestar Ricklactica
+2023-05-22 20:02:26,591 - titlecase - DEBUG - Never Ricking Morty
+2023-05-22 20:02:26,591 - titlecase - DEBUG - Promortyus
+2023-05-22 20:02:26,591 - titlecase - DEBUG - The Vat of Acid Episode
+2023-05-22 20:02:26,591 - titlecase - DEBUG - Childrick of Mort
+2023-05-22 20:02:26,592 - titlecase - DEBUG - Star Mort Rick Turn of the Jerri
+2023-05-22 20:02:26,592 - titlecase - DEBUG - Mort Dinner Rick Andre
+2023-05-22 20:02:26,592 - titlecase - DEBUG - Mortyplicity
+2023-05-22 20:02:26,592 - titlecase - DEBUG - A Rickconvenient Mort
+2023-05-22 20:02:26,593 - titlecase - DEBUG - Rickdependence Spray
+2023-05-22 20:02:26,593 - titlecase - DEBUG - Amortycan Grickfitti
+2023-05-22 20:02:26,593 - titlecase - DEBUG - Rick and Mortys Thanksploitation Spectacular
+2023-05-22 20:02:26,593 - titlecase - DEBUG - GoTron Jerrysis Rickvangelian
+2023-05-22 20:02:26,593 - titlecase - DEBUG - Rickternal Friendshine of the Spotless Mort
+2023-05-22 20:02:26,594 - titlecase - DEBUG - Forgetting Sarick Mortshall
+2023-05-22 20:02:26,594 - titlecase - DEBUG - Rickmurai Jack
+2023-05-22 20:02:26,594 - titlecase - DEBUG - Solaricks
+2023-05-22 20:02:26,594 - titlecase - DEBUG - Rick a Mort Well Lived
+2023-05-22 20:02:26,595 - titlecase - DEBUG - Bethic Twinstinct
+2023-05-22 20:02:26,595 - titlecase - DEBUG - Night Family
+2023-05-22 20:02:26,595 - titlecase - DEBUG - Final DeSmithation
+2023-05-22 20:02:26,595 - titlecase - DEBUG - JuRicksic Mort
+2023-05-22 20:02:26,595 - titlecase - DEBUG - Full Meta JackRick
+2023-05-22 20:02:26,595 - titlecase - DEBUG - Analyze Piss
+2023-05-22 20:02:26,596 - titlecase - DEBUG - A Rick in King Morturs Mort
+2023-05-22 20:02:26,596 - titlecase - DEBUG - Ricktional Mortpoons Rickmas Mortcation
+2023-05-22 20:02:26,597 - services.netflix - INFO - 
+Total items will be downloaded : 1
+2023-05-22 20:02:26,597 - services.netflix - INFO - 
+Ripping : 01 of 01
+2023-05-22 20:02:26,597 - titlecase - DEBUG - Rick and Morty S01E01 Pilot
+2023-05-22 20:02:26,598 - helpers.Parsers.netflix.Manifest - INFO - Getting MAIN Profile Manifest...
+2023-05-22 20:02:26,872 - helpers.Parsers.netflix.MSLClient - DEBUG - Using esn: NFCDIE-03-79E8B8409D1E65513A65BF82793ED7
+2023-05-22 20:02:26,873 - helpers.Parsers.netflix.MSLClient - DEBUG - Using profiles: ['playready-h264bpl30-dash', 'playready-h264mpl30-dash-prk', 'dd-5.1-dash', 'playready-h264mpl22-dash-prk', 'webvtt-lssdh-ios8', 'dfxp-ls-sdh', 'playready-h264mpl41-dash-prk', 'ddplus-2.0-dash', 'ddplus-5.1hq-dash', 'playready-h264mpl40-dash', 'BIF320', 'playready-h264mpl22-dash', 'ddplus-5.1-dash', 'BIF240', 'playready-h264bpl30-dash-prk', 'ddplus-atmos-dash', 'playready-h264mpl41-dash', 'playready-h264mpl40-dash-prk', 'playready-h264mpl30-dash']
+2023-05-22 20:02:26,873 - helpers.Parsers.netflix.MSLClient - DEBUG - Using the following esn: NFCDIE-03-79E8B8409D1E65513A65BF82793ED7
+2023-05-22 20:02:26,873 - helpers.Parsers.netflix.MSLClient - DEBUG - rsa file not found
+2023-05-22 20:02:26,873 - helpers.Parsers.netflix.MSLClient - DEBUG - generate_handshake
+2023-05-22 20:02:27,754 - hpack.table - DEBUG - Resizing header table to 65536 from 4096
+2023-05-22 20:02:27,755 - hpack.hpack - DEBUG - HPACK encoding <generator object _check_path_header.<locals>.inner at 0x7f2ed1d5a5e0>
+2023-05-22 20:02:27,756 - hpack.hpack - DEBUG - Encoding 65536 with 5 bits
+2023-05-22 20:02:27,756 - hpack.hpack - DEBUG - Adding (b':method', b'POST') to the header table
+2023-05-22 20:02:27,756 - hpack.hpack - DEBUG - Encoding 3 with 7 bits
+2023-05-22 20:02:27,756 - hpack.hpack - DEBUG - Adding (b':scheme', b'https') to the header table
+2023-05-22 20:02:27,756 - hpack.hpack - DEBUG - Encoding 7 with 7 bits
+2023-05-22 20:02:27,756 - hpack.hpack - DEBUG - Adding (b':authority', b'www.netflix.com') to the header table
+2023-05-22 20:02:27,756 - hpack.hpack - DEBUG - Encoding 1 with 6 bits
+2023-05-22 20:02:27,757 - hpack.hpack - DEBUG - Encoding 12 with 7 bits
+2023-05-22 20:02:27,757 - hpack.hpack - DEBUG - Adding (b':path', b'/nq/msl_v1/cadmium/pbo_licenses/%5E1.0.0/router?reqName=manifest') to the header table
+2023-05-22 20:02:27,757 - hpack.hpack - DEBUG - Encoding 4 with 6 bits
+2023-05-22 20:02:27,757 - hpack.hpack - DEBUG - Encoding 46 with 7 bits
+2023-05-22 20:02:27,757 - hpack.hpack - DEBUG - Adding (b'user-agent', b'python-requests/2.28.1') to the header table
+2023-05-22 20:02:27,757 - hpack.hpack - DEBUG - Encoding 58 with 6 bits
+2023-05-22 20:02:27,757 - hpack.hpack - DEBUG - Encoding 16 with 7 bits
+2023-05-22 20:02:27,757 - hpack.hpack - DEBUG - Adding (b'accept-encoding', b'gzip') to the header table
+2023-05-22 20:02:27,757 - hpack.hpack - DEBUG - Encoding 16 with 6 bits
+2023-05-22 20:02:27,758 - hpack.hpack - DEBUG - Encoding 3 with 7 bits
+2023-05-22 20:02:27,758 - hpack.hpack - DEBUG - Adding (b'accept-encoding', b'deflate') to the header table
+2023-05-22 20:02:27,758 - hpack.hpack - DEBUG - Encoding 16 with 6 bits
+2023-05-22 20:02:27,758 - hpack.hpack - DEBUG - Encoding 5 with 7 bits
+2023-05-22 20:02:27,758 - hpack.hpack - DEBUG - Adding (b'accept-encoding', b'br') to the header table
+2023-05-22 20:02:27,758 - hpack.hpack - DEBUG - Encoding 16 with 6 bits
+2023-05-22 20:02:27,758 - hpack.hpack - DEBUG - Encoding 2 with 7 bits
+2023-05-22 20:02:27,758 - hpack.hpack - DEBUG - Adding (b'accept', b'*/*') to the header table
+2023-05-22 20:02:27,758 - hpack.hpack - DEBUG - Encoding 19 with 6 bits
+2023-05-22 20:02:27,758 - hpack.hpack - DEBUG - Encoding 3 with 7 bits
+2023-05-22 20:02:27,759 - hpack.hpack - DEBUG - Adding (b'content-length', b'1195') to the header table
+2023-05-22 20:02:27,759 - hpack.hpack - DEBUG - Encoding 28 with 6 bits
+2023-05-22 20:02:27,759 - hpack.hpack - DEBUG - Encoding 3 with 7 bits
+2023-05-22 20:02:27,759 - hpack.hpack - DEBUG - Adding (b'content-type', b'application/json') to the header table
+2023-05-22 20:02:27,759 - hpack.hpack - DEBUG - Encoding 31 with 6 bits
+2023-05-22 20:02:27,759 - hpack.hpack - DEBUG - Encoding 11 with 7 bits
+2023-05-22 20:02:27,759 - hpack.hpack - DEBUG - Encoded header block to b'?\xe1\xff\x03\x83\x87A\x8c\xf1\xe3\xc2\xf5\x152\xd0o+\x90\xf4\xffD\xaeb\xae\xccR\x8a"\xee\x16\x089)5\xb4\xb1\\g\x8a\x83\x10\xb5 \xa8aV\xf0\x05p.\x06,=\xa9-\x9f\xe5\x85\xed\xa4t\x96\nGQ\xa5*\x13z\x90\xaf\xd2g=KX^\xd6\x95\tC\x02\\O.\x1fP\x83\x9b\xd9\xabP\x85\x90\xb2\xd04\x97P\x82\x8e\xcfS\x83\xf9c\xe7\\\x83\x08_o_\x8b\x1du\xd0b\r&=LtA\xea'
+2023-05-22 20:02:28,321 - hpack.hpack - DEBUG - Decoding b'\x88\\\x042996|!2 i-0dfde3dca7baa1267 (us-west-2)v+nq_cadmium_pbo_licenses-prod-^1.0.0 UNKNOWN@\x10x-xss-protectionL1; mode=block; report=https://www.netflix.com/ichnaea/log/freeform/xssreport@\x16x-content-type-options\x07nosniffx#max-age=31536000; includeSubDomains@\x11x-originating-urlVhttp://www.netflix.com/nq/msl_v1/cadmium/pbo_licenses/%5E1.0.0/router?reqName=manifestw\x7f3nfvdid=BQFmAAEBECsi4F5NI7yOlOjxbv08VZhAiMq20bTaAYZPMSoOgSc4jsZAUc829x33So5LGxQvosiueP3ZI7FspPohT14UemjJAquhphxC-GeQGJ8Rw_noBA%3D%3D; Domain=.netflix.com; Path=/; Max-Age=31536000@\x12x-netflix.nfstatus\x031_6@\x1ex-netflix.proxy.execution-time\x03254'
+2023-05-22 20:02:28,321 - hpack.hpack - DEBUG - Decoded 8, consumed 1 bytes
+2023-05-22 20:02:28,321 - hpack.hpack - DEBUG - Decoded (b':status', b'200'), consumed 1
+2023-05-22 20:02:28,322 - hpack.hpack - DEBUG - Decoded 28, consumed 1 bytes
+2023-05-22 20:02:28,322 - hpack.hpack - DEBUG - Decoded 4, consumed 1 bytes
+2023-05-22 20:02:28,322 - hpack.hpack - DEBUG - Decoded (b'content-length', <memory at 0x7f2ed1db0b80>), total consumed 6 bytes, indexed True
+2023-05-22 20:02:28,322 - hpack.hpack - DEBUG - Decoded 60, consumed 1 bytes
+2023-05-22 20:02:28,322 - hpack.hpack - DEBUG - Decoded 33, consumed 1 bytes
+2023-05-22 20:02:28,322 - hpack.hpack - DEBUG - Decoded (b'via', <memory at 0x7f2ed1db0c40>), total consumed 35 bytes, indexed True
+2023-05-22 20:02:28,322 - hpack.hpack - DEBUG - Decoded 54, consumed 1 bytes
+2023-05-22 20:02:28,322 - hpack.hpack - DEBUG - Decoded 43, consumed 1 bytes
+2023-05-22 20:02:28,322 - hpack.hpack - DEBUG - Decoded (b'server', <memory at 0x7f2ed1db0d00>), total consumed 45 bytes, indexed True
+2023-05-22 20:02:28,322 - hpack.hpack - DEBUG - Decoded 16, consumed 1 bytes
+2023-05-22 20:02:28,323 - hpack.hpack - DEBUG - Decoded 76, consumed 1 bytes
+2023-05-22 20:02:28,323 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f2ed1db0dc0>, <memory at 0x7f2ed1db0880>), total consumed 95 bytes, indexed True
+2023-05-22 20:02:28,323 - hpack.hpack - DEBUG - Decoded 22, consumed 1 bytes
+2023-05-22 20:02:28,323 - hpack.hpack - DEBUG - Decoded 7, consumed 1 bytes
+2023-05-22 20:02:28,323 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f2ed1db0f40>, <memory at 0x7f2ed1db0e80>), total consumed 32 bytes, indexed True
+2023-05-22 20:02:28,323 - hpack.hpack - DEBUG - Decoded 56, consumed 1 bytes
+2023-05-22 20:02:28,323 - hpack.hpack - DEBUG - Decoded 35, consumed 1 bytes
+2023-05-22 20:02:28,323 - hpack.hpack - DEBUG - Decoded (b'strict-transport-security', <memory at 0x7f2ed1db10c0>), total consumed 37 bytes, indexed True
+2023-05-22 20:02:28,323 - hpack.hpack - DEBUG - Decoded 17, consumed 1 bytes
+2023-05-22 20:02:28,323 - hpack.hpack - DEBUG - Decoded 86, consumed 1 bytes
+2023-05-22 20:02:28,323 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f2ed1db1180>, <memory at 0x7f2ed1db1000>), total consumed 106 bytes, indexed True
+2023-05-22 20:02:28,324 - hpack.hpack - DEBUG - Decoded 55, consumed 1 bytes
+2023-05-22 20:02:28,324 - hpack.hpack - DEBUG - Decoded 178, consumed 2 bytes
+2023-05-22 20:02:28,324 - hpack.hpack - DEBUG - Decoded (b'set-cookie', <memory at 0x7f2ed1db1300>), total consumed 181 bytes, indexed True
+2023-05-22 20:02:28,324 - hpack.hpack - DEBUG - Decoded 18, consumed 1 bytes
+2023-05-22 20:02:28,324 - hpack.hpack - DEBUG - Decoded 3, consumed 1 bytes
+2023-05-22 20:02:28,324 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f2ed1db13c0>, <memory at 0x7f2ed1db1240>), total consumed 24 bytes, indexed True
+2023-05-22 20:02:28,324 - hpack.hpack - DEBUG - Decoded 30, consumed 1 bytes
+2023-05-22 20:02:28,324 - hpack.hpack - DEBUG - Decoded 3, consumed 1 bytes
+2023-05-22 20:02:28,324 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f2ed1db1540>, <memory at 0x7f2ed1db1480>), total consumed 36 bytes, indexed True
+2023-05-22 20:02:28,431 - hpack.hpack - DEBUG - HPACK encoding <generator object _check_path_header.<locals>.inner at 0x7f2ed1d5a340>
+2023-05-22 20:02:28,431 - hpack.hpack - DEBUG - Adding (b':method', b'POST') to the header table
+2023-05-22 20:02:28,432 - hpack.hpack - DEBUG - Encoding 3 with 7 bits
+2023-05-22 20:02:28,432 - hpack.hpack - DEBUG - Adding (b':scheme', b'https') to the header table
+2023-05-22 20:02:28,432 - hpack.hpack - DEBUG - Encoding 7 with 7 bits
+2023-05-22 20:02:28,432 - hpack.hpack - DEBUG - Adding (b':authority', b'www.netflix.com') to the header table
+2023-05-22 20:02:28,432 - hpack.hpack - DEBUG - Encoding 70 with 7 bits
+2023-05-22 20:02:28,432 - hpack.hpack - DEBUG - Adding (b':path', b'/nq/msl_v1/cadmium/pbo_licenses/%5E1.0.0/router?reqName=manifest') to the header table
+2023-05-22 20:02:28,432 - hpack.hpack - DEBUG - Encoding 69 with 7 bits
+2023-05-22 20:02:28,432 - hpack.hpack - DEBUG - Adding (b'user-agent', b'python-requests/2.28.1') to the header table
+2023-05-22 20:02:28,432 - hpack.hpack - DEBUG - Encoding 68 with 7 bits
+2023-05-22 20:02:28,432 - hpack.hpack - DEBUG - Adding (b'accept-encoding', b'gzip') to the header table
+2023-05-22 20:02:28,433 - hpack.hpack - DEBUG - Encoding 67 with 7 bits
+2023-05-22 20:02:28,433 - hpack.hpack - DEBUG - Adding (b'accept-encoding', b'deflate') to the header table
+2023-05-22 20:02:28,433 - hpack.hpack - DEBUG - Encoding 66 with 7 bits
+2023-05-22 20:02:28,433 - hpack.hpack - DEBUG - Adding (b'accept-encoding', b'br') to the header table
+2023-05-22 20:02:28,433 - hpack.hpack - DEBUG - Encoding 65 with 7 bits
+2023-05-22 20:02:28,433 - hpack.hpack - DEBUG - Adding (b'accept', b'*/*') to the header table
+2023-05-22 20:02:28,433 - hpack.hpack - DEBUG - Encoding 64 with 7 bits
+2023-05-22 20:02:28,433 - hpack.hpack - DEBUG - Adding (b'content-length', b'5678') to the header table
+2023-05-22 20:02:28,433 - hpack.hpack - DEBUG - Encoding 28 with 6 bits
+2023-05-22 20:02:28,433 - hpack.hpack - DEBUG - Encoding 3 with 7 bits
+2023-05-22 20:02:28,434 - hpack.hpack - DEBUG - Encoded header block to b'\x83\x87\xc6\xc5\xc4\xc3\xc2\xc1\xc0\\\x83m\xc7^'
+2023-05-22 20:02:28,965 - hpack.hpack - DEBUG - Decoding b'\x88\\\x03667\xc7\xc6\xc5\xc4\xc3\xc2w\x7f3nfvdid=BQFmAAEBEGj7_7Qb3wjzo6t-EnqY1XxAgjg7Eb9mFDPJcPBYQ5Ni9D-YvjXsaL9I8jOTU4XMYb9v2_x76zeO8YFFnHZTiYHzLTqFKHqwV8qweaLLseBQpg%3D%3D; Domain=.netflix.com; Path=/; Max-Age=31536000\xc1\x7f\x01\x03274'
+2023-05-22 20:02:28,965 - hpack.hpack - DEBUG - Decoded 8, consumed 1 bytes
+2023-05-22 20:02:28,966 - hpack.hpack - DEBUG - Decoded (b':status', b'200'), consumed 1
+2023-05-22 20:02:28,966 - hpack.hpack - DEBUG - Decoded 28, consumed 1 bytes
+2023-05-22 20:02:28,966 - hpack.hpack - DEBUG - Decoded 3, consumed 1 bytes
+2023-05-22 20:02:28,966 - hpack.hpack - DEBUG - Decoded (b'content-length', <memory at 0x7f2ed1db0a00>), total consumed 5 bytes, indexed True
+2023-05-22 20:02:28,966 - hpack.hpack - DEBUG - Decoded 71, consumed 1 bytes
+2023-05-22 20:02:28,966 - hpack.hpack - DEBUG - Decoded (b'via', <memory at 0x7f2ed1db0c40>), consumed 1
+2023-05-22 20:02:28,967 - hpack.hpack - DEBUG - Decoded 70, consumed 1 bytes
+2023-05-22 20:02:28,967 - hpack.hpack - DEBUG - Decoded (b'server', <memory at 0x7f2ed1db0d00>), consumed 1
+2023-05-22 20:02:28,967 - hpack.hpack - DEBUG - Decoded 69, consumed 1 bytes
+2023-05-22 20:02:28,967 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f2ed1db0dc0>, <memory at 0x7f2ed1db0880>), consumed 1
+2023-05-22 20:02:28,967 - hpack.hpack - DEBUG - Decoded 68, consumed 1 bytes
+2023-05-22 20:02:28,967 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f2ed1db0f40>, <memory at 0x7f2ed1db0e80>), consumed 1
+2023-05-22 20:02:28,967 - hpack.hpack - DEBUG - Decoded 67, consumed 1 bytes
+2023-05-22 20:02:28,968 - hpack.hpack - DEBUG - Decoded (b'strict-transport-security', <memory at 0x7f2ed1db10c0>), consumed 1
+2023-05-22 20:02:28,968 - hpack.hpack - DEBUG - Decoded 66, consumed 1 bytes
+2023-05-22 20:02:28,968 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f2ed1db1180>, <memory at 0x7f2ed1db1000>), consumed 1
+2023-05-22 20:02:28,968 - hpack.hpack - DEBUG - Decoded 55, consumed 1 bytes
+2023-05-22 20:02:28,968 - hpack.hpack - DEBUG - Decoded 178, consumed 2 bytes
+2023-05-22 20:02:28,968 - hpack.hpack - DEBUG - Decoded (b'set-cookie', <memory at 0x7f2ed1db16c0>), total consumed 181 bytes, indexed True
+2023-05-22 20:02:28,968 - hpack.hpack - DEBUG - Decoded 65, consumed 1 bytes
+2023-05-22 20:02:28,969 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f2ed1db13c0>, <memory at 0x7f2ed1db1240>), consumed 1
+2023-05-22 20:02:28,969 - hpack.hpack - DEBUG - Decoded 64, consumed 2 bytes
+2023-05-22 20:02:28,969 - hpack.hpack - DEBUG - Decoded 3, consumed 1 bytes
+2023-05-22 20:02:28,969 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f2ed1db1540>, <memory at 0x7f2ed1db1840>), total consumed 6 bytes, indexed True
+2023-05-22 20:02:28,971 - helpers.Parsers.netflix.Manifest - INFO - Error: Email or password is incorrect.
+2023-05-22 20:02:28,972 - helpers.tracks - INFO - 
+Selected Tracks

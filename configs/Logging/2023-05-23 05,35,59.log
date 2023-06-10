@@ -1,0 +1,191 @@
+2023-05-23 05:36:35,997 - helpers.Utils.ProxyHandler - INFO - Getting IP...
+2023-05-23 05:36:35,998 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): ipinfo.io:443
+2023-05-23 05:36:36,322 - urllib3.connectionpool - DEBUG - https://ipinfo.io:443 "GET /json HTTP/1.1" 200 None
+2023-05-23 05:36:38,120 - urllib3.util.retry - DEBUG - Converted retries value: 5 -> Retry(total=5, connect=None, read=None, redirect=None, status=None)
+2023-05-23 05:36:38,122 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.netflix.com:443
+2023-05-23 05:36:41,843 - urllib3.connectionpool - DEBUG - https://www.netflix.com:443 "GET /browse HTTP/1.1" 200 None
+2023-05-23 05:36:42,796 - services.netflix - INFO - Getting Metadata...
+2023-05-23 05:36:42,798 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.netflix.com:443
+2023-05-23 05:36:43,557 - urllib3.connectionpool - DEBUG - https://www.netflix.com:443 "GET /nq/website/memberapi/vaf4f97f3/metadata?movieid=81504461&drmSystem=widevine&isWatchlistEnabled=false&isShortformEnabled=false&isVolatileBillboardsEnabled=false&languages=en HTTP/1.1" 200 None
+2023-05-23 05:36:43,559 - titlecase - DEBUG - Virupaksha
+2023-05-23 05:36:43,559 - titlecase - DEBUG - 2023
+2023-05-23 05:36:43,560 - helpers.Parsers.netflix.Manifest - INFO - Getting MAIN Profile Manifest...
+2023-05-23 05:36:43,604 - helpers.Parsers.netflix.MSLClient - DEBUG - Using esn: NFCDIE-03-A012DC5E0242D389723EB781EBB038
+2023-05-23 05:36:43,604 - helpers.Parsers.netflix.MSLClient - DEBUG - Using profiles: ['playready-h264mpl41-dash', 'playready-h264mpl30-dash-prk', 'webvtt-lssdh-ios8', 'playready-h264bpl30-dash-prk', 'playready-h264mpl41-dash-prk', 'playready-h264bpl30-dash', 'ddplus-2.0-dash', 'dd-5.1-dash', 'dfxp-ls-sdh', 'playready-h264mpl40-dash', 'playready-h264mpl22-dash', 'BIF320', 'BIF240', 'playready-h264mpl40-dash-prk', 'playready-h264mpl30-dash', 'ddplus-atmos-dash', 'ddplus-5.1hq-dash', 'playready-h264mpl22-dash-prk', 'ddplus-5.1-dash']
+2023-05-23 05:36:43,604 - helpers.Parsers.netflix.MSLClient - DEBUG - Using the following esn: NFCDIE-03-A012DC5E0242D389723EB781EBB038
+2023-05-23 05:36:43,604 - helpers.Parsers.netflix.MSLClient - DEBUG - rsa file found
+2023-05-23 05:36:44,286 - hpack.table - DEBUG - Resizing header table to 65536 from 4096
+2023-05-23 05:36:44,286 - hpack.hpack - DEBUG - HPACK encoding <generator object _check_path_header.<locals>.inner at 0x7f8e99208ba0>
+2023-05-23 05:36:44,286 - hpack.hpack - DEBUG - Encoding 65536 with 5 bits
+2023-05-23 05:36:44,286 - hpack.hpack - DEBUG - Adding (b':method', b'POST') to the header table
+2023-05-23 05:36:44,286 - hpack.hpack - DEBUG - Encoding 3 with 7 bits
+2023-05-23 05:36:44,286 - hpack.hpack - DEBUG - Adding (b':scheme', b'https') to the header table
+2023-05-23 05:36:44,286 - hpack.hpack - DEBUG - Encoding 7 with 7 bits
+2023-05-23 05:36:44,286 - hpack.hpack - DEBUG - Adding (b':authority', b'www.netflix.com') to the header table
+2023-05-23 05:36:44,286 - hpack.hpack - DEBUG - Encoding 1 with 6 bits
+2023-05-23 05:36:44,286 - hpack.hpack - DEBUG - Encoding 12 with 7 bits
+2023-05-23 05:36:44,286 - hpack.hpack - DEBUG - Adding (b':path', b'/nq/msl_v1/cadmium/pbo_licenses/%5E1.0.0/router?reqName=manifest') to the header table
+2023-05-23 05:36:44,286 - hpack.hpack - DEBUG - Encoding 4 with 6 bits
+2023-05-23 05:36:44,286 - hpack.hpack - DEBUG - Encoding 46 with 7 bits
+2023-05-23 05:36:44,286 - hpack.hpack - DEBUG - Adding (b'user-agent', b'python-requests/2.25.1') to the header table
+2023-05-23 05:36:44,286 - hpack.hpack - DEBUG - Encoding 58 with 6 bits
+2023-05-23 05:36:44,286 - hpack.hpack - DEBUG - Encoding 16 with 7 bits
+2023-05-23 05:36:44,286 - hpack.hpack - DEBUG - Adding (b'accept-encoding', b'gzip') to the header table
+2023-05-23 05:36:44,287 - hpack.hpack - DEBUG - Encoding 16 with 6 bits
+2023-05-23 05:36:44,287 - hpack.hpack - DEBUG - Encoding 3 with 7 bits
+2023-05-23 05:36:44,287 - hpack.hpack - DEBUG - Adding (b'accept-encoding', b'deflate') to the header table
+2023-05-23 05:36:44,287 - hpack.hpack - DEBUG - Encoding 16 with 6 bits
+2023-05-23 05:36:44,287 - hpack.hpack - DEBUG - Encoding 5 with 7 bits
+2023-05-23 05:36:44,287 - hpack.hpack - DEBUG - Adding (b'accept', b'*/*') to the header table
+2023-05-23 05:36:44,287 - hpack.hpack - DEBUG - Encoding 19 with 6 bits
+2023-05-23 05:36:44,287 - hpack.hpack - DEBUG - Encoding 3 with 7 bits
+2023-05-23 05:36:44,287 - hpack.hpack - DEBUG - Adding (b'content-length', b'4798') to the header table
+2023-05-23 05:36:44,287 - hpack.hpack - DEBUG - Encoding 28 with 6 bits
+2023-05-23 05:36:44,287 - hpack.hpack - DEBUG - Encoding 3 with 7 bits
+2023-05-23 05:36:44,287 - hpack.hpack - DEBUG - Encoded header block to b'?\xe1\xff\x03\x83\x87A\x8c\xf1\xe3\xc2\xf5\x152\xd0o+\x90\xf4\xffD\xaeb\xae\xccR\x8a"\xee\x16\x089)5\xb4\xb1\\g\x8a\x83\x10\xb5 \xa8aV\xf0\x05p.\x06,=\xa9-\x9f\xe5\x85\xed\xa4t\x96\nGQ\xa5*\x13z\x90\xaf\xd2g=KX^\xd6\x95\tC\x02\\M\xae\x1fP\x83\x9b\xd9\xabP\x85\x90\xb2\xd04\x97S\x83\xf9c\xe7\\\x83i\xd7\xde'
+2023-05-23 05:36:44,831 - hpack.hpack - DEBUG - Decoding b'\x88vHnq_cadmium_pbo_licenses-prod-^1.0.0 6831e86c-0935-4add-a982-161a35fac311_\x10application/jsona\x1dTue, 23 May 2023 05:36:44 GMT@\x1dx-envoy-upstream-service-time\x0255@\x0cx-b3-traceid\x1039c7f7e9282f1c58@\x0cx-request-id$a5ce1a33-2f91-4caf-87f7-3c373b8f1908@\x1bx-envoy-decorator-operation\x06lo_svc|!2 i-07b06193a2d1ded17 (us-west-2)@\x10x-xss-protectionL1; mode=block; report=https://www.netflix.com/ichnaea/log/freeform/xssreport@\x16x-content-type-options\x07nosniffx#max-age=31536000; includeSubDomains@\x11x-originating-urlVhttp://www.netflix.com/nq/msl_v1/cadmium/pbo_licenses/%5E1.0.0/router?reqName=manifestw\x7fWnfvdid=BQFmAAEBEIbx0rLzMJkUblXDs5qBGARgps_cwJVNYaep8Jv7OPQfaI_acHXLqj_HyuzN6JLhrLNZEsCrXofk50io88FxB5VXzrN0AxDG8FQzGsV2STD337dMLUNGc25QjFeWwqr488S9j0PEfZlMBPXdL5sBe5ch; Domain=.netflix.com; Path=/; Max-Age=31536000@\x12x-netflix.nfstatus\x031_1@\x1ex-netflix.proxy.execution-time\x03333@.x-netflix.zuul.netty.content.compressor.target\x04gzipZ\x04gzip'
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 8, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded (b':status', b'200'), consumed 1
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 54, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 72, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded (b'server', <memory at 0x7f8e98673400>), total consumed 74 bytes, indexed True
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 31, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 16, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded (b'content-type', <memory at 0x7f8e986734c0>), total consumed 18 bytes, indexed True
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 33, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 29, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded (b'date', <memory at 0x7f8e98673580>), total consumed 31 bytes, indexed True
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 29, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 2, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e98673640>, <memory at 0x7f8e98673340>), total consumed 34 bytes, indexed True
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 12, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 16, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e986737c0>, <memory at 0x7f8e98673700>), total consumed 31 bytes, indexed True
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 12, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 36, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e98673940>, <memory at 0x7f8e98673880>), total consumed 51 bytes, indexed True
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 27, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 6, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e98673ac0>, <memory at 0x7f8e98673a00>), total consumed 36 bytes, indexed True
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 60, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 33, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded (b'via', <memory at 0x7f8e98673c40>), total consumed 35 bytes, indexed True
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 16, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 76, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e98673d00>, <memory at 0x7f8e98673b80>), total consumed 95 bytes, indexed True
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 22, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 7, consumed 1 bytes
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e98673e80>, <memory at 0x7f8e98673dc0>), total consumed 32 bytes, indexed True
+2023-05-23 05:36:44,832 - hpack.hpack - DEBUG - Decoded 56, consumed 1 bytes
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded 35, consumed 1 bytes
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded (b'strict-transport-security', <memory at 0x7f8e9857a040>), total consumed 37 bytes, indexed True
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded 17, consumed 1 bytes
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded 86, consumed 1 bytes
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e9857a100>, <memory at 0x7f8e98673f40>), total consumed 106 bytes, indexed True
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded 55, consumed 1 bytes
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded 214, consumed 2 bytes
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded (b'set-cookie', <memory at 0x7f8e9857a280>), total consumed 217 bytes, indexed True
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded 18, consumed 1 bytes
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded 3, consumed 1 bytes
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e9857a340>, <memory at 0x7f8e9857a1c0>), total consumed 24 bytes, indexed True
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded 30, consumed 1 bytes
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded 3, consumed 1 bytes
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e9857a4c0>, <memory at 0x7f8e9857a400>), total consumed 36 bytes, indexed True
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded 46, consumed 1 bytes
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded 4, consumed 1 bytes
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e9857a640>, <memory at 0x7f8e9857a580>), total consumed 53 bytes, indexed True
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded 26, consumed 1 bytes
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded 4, consumed 1 bytes
+2023-05-23 05:36:44,833 - hpack.hpack - DEBUG - Decoded (b'content-encoding', <memory at 0x7f8e9857a880>), total consumed 6 bytes, indexed True
+2023-05-23 05:36:44,834 - helpers.Parsers.netflix.Manifest - INFO - Error: You seem to be using a VPN or proxy. Please turn off any of these services and try again. For more help, visit netflix.com/proxy.
+2023-05-23 05:36:44,834 - helpers.Parsers.netflix.Manifest - INFO - Getting HIGH Profile Manifest...
+2023-05-23 05:36:44,865 - helpers.Parsers.netflix.MSLClient - DEBUG - Using esn: NFCDIE-03-A012DC5E0242D389723EB781EBB038
+2023-05-23 05:36:44,865 - helpers.Parsers.netflix.MSLClient - DEBUG - Using profiles: ['dd-5.1-dash', 'ddplus-2.0-dash', 'ddplus-5.1-dash', 'playready-h264hpl30-dash', 'playready-h264hpl40-dash', 'dfxp-ls-sdh', 'playready-h264hpl41-dash', 'playready-h264hpl22-dash-prk', 'playready-h264hpl41-dash-prk', 'BIF320', 'webvtt-lssdh-ios8', 'ddplus-5.1hq-dash', 'ddplus-atmos-dash', 'playready-h264hpl22-dash', 'playready-h264hpl30-dash-prk', 'BIF240', 'playready-h264hpl40-dash-prk']
+2023-05-23 05:36:44,865 - helpers.Parsers.netflix.MSLClient - DEBUG - Using the following esn: NFCDIE-03-A012DC5E0242D389723EB781EBB038
+2023-05-23 05:36:44,865 - helpers.Parsers.netflix.MSLClient - DEBUG - rsa file found
+2023-05-23 05:36:45,511 - hpack.table - DEBUG - Resizing header table to 65536 from 4096
+2023-05-23 05:36:45,511 - hpack.hpack - DEBUG - HPACK encoding <generator object _check_path_header.<locals>.inner at 0x7f8e985f8890>
+2023-05-23 05:36:45,511 - hpack.hpack - DEBUG - Encoding 65536 with 5 bits
+2023-05-23 05:36:45,511 - hpack.hpack - DEBUG - Adding (b':method', b'POST') to the header table
+2023-05-23 05:36:45,511 - hpack.hpack - DEBUG - Encoding 3 with 7 bits
+2023-05-23 05:36:45,511 - hpack.hpack - DEBUG - Adding (b':scheme', b'https') to the header table
+2023-05-23 05:36:45,511 - hpack.hpack - DEBUG - Encoding 7 with 7 bits
+2023-05-23 05:36:45,511 - hpack.hpack - DEBUG - Adding (b':authority', b'www.netflix.com') to the header table
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Encoding 1 with 6 bits
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Encoding 12 with 7 bits
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Adding (b':path', b'/nq/msl_v1/cadmium/pbo_licenses/%5E1.0.0/router?reqName=manifest') to the header table
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Encoding 4 with 6 bits
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Encoding 46 with 7 bits
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Adding (b'user-agent', b'python-requests/2.25.1') to the header table
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Encoding 58 with 6 bits
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Encoding 16 with 7 bits
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Adding (b'accept-encoding', b'gzip') to the header table
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Encoding 16 with 6 bits
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Encoding 3 with 7 bits
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Adding (b'accept-encoding', b'deflate') to the header table
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Encoding 16 with 6 bits
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Encoding 5 with 7 bits
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Adding (b'accept', b'*/*') to the header table
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Encoding 19 with 6 bits
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Encoding 3 with 7 bits
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Adding (b'content-length', b'4714') to the header table
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Encoding 28 with 6 bits
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Encoding 3 with 7 bits
+2023-05-23 05:36:45,512 - hpack.hpack - DEBUG - Encoded header block to b'?\xe1\xff\x03\x83\x87A\x8c\xf1\xe3\xc2\xf5\x152\xd0o+\x90\xf4\xffD\xaeb\xae\xccR\x8a"\xee\x16\x089)5\xb4\xb1\\g\x8a\x83\x10\xb5 \xa8aV\xf0\x05p.\x06,=\xa9-\x9f\xe5\x85\xed\xa4t\x96\nGQ\xa5*\x13z\x90\xaf\xd2g=KX^\xd6\x95\tC\x02\\M\xae\x1fP\x83\x9b\xd9\xabP\x85\x90\xb2\xd04\x97S\x83\xf9c\xe7\\\x83i\xd0\xb5'
+2023-05-23 05:36:46,048 - hpack.hpack - DEBUG - Decoding b'\x88vHnq_cadmium_pbo_licenses-prod-^1.0.0 b645ab96-0c84-403d-b4b4-74b76001db71_\x10application/jsona\x1dTue, 23 May 2023 05:36:45 GMT@\x1dx-envoy-upstream-service-time\x0234@\x0cx-b3-traceid\x10c2267d1ba155d43f@\x0cx-request-id$bb93e068-41b1-402b-88af-a7265c3de543@\x1bx-envoy-decorator-operation\x06lo_svc|!2 i-0da4b65443ddd88b0 (us-west-2)@\x10x-xss-protectionL1; mode=block; report=https://www.netflix.com/ichnaea/log/freeform/xssreport@\x16x-content-type-options\x07nosniffx#max-age=31536000; includeSubDomains@\x11x-originating-urlVhttp://www.netflix.com/nq/msl_v1/cadmium/pbo_licenses/%5E1.0.0/router?reqName=manifestw\x7fWnfvdid=BQFmAAEBEOAPeQybN_eBT-pTDCNaIDdgCDoHAcKmIwWv5JU-ZK1rjBN-_mPMyDyzNIdj1sDjmVPHm14lldHkEcbLjCHuzTJmtEoDQtVQch3blznzeFQpz_DowwCM6iqA5V0r7G-Ak1hK8DBJ0HATMgotYjoaFew1; Domain=.netflix.com; Path=/; Max-Age=31536000@\x12x-netflix.nfstatus\x031_1@\x1ex-netflix.proxy.execution-time\x03322@.x-netflix.zuul.netty.content.compressor.target\x04gzipZ\x04gzip'
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 8, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded (b':status', b'200'), consumed 1
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 54, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 72, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded (b'server', <memory at 0x7f8e9857aa00>), total consumed 74 bytes, indexed True
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 31, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 16, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded (b'content-type', <memory at 0x7f8e9857aac0>), total consumed 18 bytes, indexed True
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 33, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 29, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded (b'date', <memory at 0x7f8e9857ab80>), total consumed 31 bytes, indexed True
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 29, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 2, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e9857ac40>, <memory at 0x7f8e9857a940>), total consumed 34 bytes, indexed True
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 12, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 16, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e9857adc0>, <memory at 0x7f8e9857ad00>), total consumed 31 bytes, indexed True
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 12, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 36, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e9857af40>, <memory at 0x7f8e9857ae80>), total consumed 51 bytes, indexed True
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 27, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 6, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e98584100>, <memory at 0x7f8e98584040>), total consumed 36 bytes, indexed True
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 60, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 33, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded (b'via', <memory at 0x7f8e98584280>), total consumed 35 bytes, indexed True
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 16, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 76, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e98584340>, <memory at 0x7f8e985841c0>), total consumed 95 bytes, indexed True
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 22, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded 7, consumed 1 bytes
+2023-05-23 05:36:46,049 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e985844c0>, <memory at 0x7f8e98584400>), total consumed 32 bytes, indexed True
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded 56, consumed 1 bytes
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded 35, consumed 1 bytes
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded (b'strict-transport-security', <memory at 0x7f8e98584640>), total consumed 37 bytes, indexed True
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded 17, consumed 1 bytes
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded 86, consumed 1 bytes
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e98584700>, <memory at 0x7f8e98584580>), total consumed 106 bytes, indexed True
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded 55, consumed 1 bytes
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded 214, consumed 2 bytes
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded (b'set-cookie', <memory at 0x7f8e98584880>), total consumed 217 bytes, indexed True
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded 18, consumed 1 bytes
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded 3, consumed 1 bytes
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e98584940>, <memory at 0x7f8e985847c0>), total consumed 24 bytes, indexed True
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded 30, consumed 1 bytes
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded 3, consumed 1 bytes
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e98584ac0>, <memory at 0x7f8e98584a00>), total consumed 36 bytes, indexed True
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded 46, consumed 1 bytes
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded 4, consumed 1 bytes
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded (<memory at 0x7f8e98584c40>, <memory at 0x7f8e98584b80>), total consumed 53 bytes, indexed True
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded 26, consumed 1 bytes
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded 4, consumed 1 bytes
+2023-05-23 05:36:46,050 - hpack.hpack - DEBUG - Decoded (b'content-encoding', <memory at 0x7f8e98584e80>), total consumed 6 bytes, indexed True
+2023-05-23 05:36:46,051 - helpers.Parsers.netflix.Manifest - INFO - Error: You seem to be using a VPN or proxy. Please turn off any of these services and try again. For more help, visit netflix.com/proxy.
+2023-05-23 05:36:46,051 - helpers.tracks - INFO - 
+Selected Tracks

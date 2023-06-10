@@ -1,0 +1,32 @@
+1. Install python 3.10.11 (use python 3.10.xx only), be sure to add python to PATH while installing it
+
+https://www.python.org/ftp/python/3.10.11/python-3.10.11-amd64.exe
+
+https://datatofish.com/add-python-to-windows-path/
+
+2. Run install.requirements.bat
+
+3. Go to the folder configs and add your email and password in Netflix in config.toml (open the file with Notepad++)
+
+4. Install this Chrome extension
+
+https://chrome.google.com/webstore/detail/get-cookiestxt/bgaddhkoddajcdgocldbbfleckgcbcid
+
+and go to netflix.com and download the cookies, rename the file to cookies_nf.txt and put it in
+
+configs\Cookies
+
+For Firefox use this addon
+
+https://addons.mozilla.org/en-US/firefox/addon/cookies-txt-one-click/
+
+5. Add the chrome cdm api host URL and api key in helpers\Parsers\netflix\License.py
+
+6. For downloading the video use
+
+python3 wvripper.py 80014749 --service NETFLIX -s 1 -e 1 -vp MAIN -q 1080 -al eng -sl eng
+
+for more options use
+
+wvripper.py -h
+

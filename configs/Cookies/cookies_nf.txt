@@ -1,0 +1,17 @@
+{
+    "COOKIES": {
+        "NetflixId": "v%3D2%26ct%3DBQAOAAEBEAXEb-muQ9QwtgAgf8GmineBwB_BiISYlFK0waYMDK9BhK_VpRd0Qxyegi-O32YP3x8cO9a2bFLkZ6boHmlPlUuHhSk7iGYAe2ErUY-sB07AX8XWKAa7yOXH06WAUuqx4dlf5fCYBLudQiiqMj15SZkiagOpj4TRSXzqwWNg_-bNkemzWw1PmnMsGG79_6okk-QoUzQ0n5i7sr_VgFdTvGgS-hL2Q7JiwjnyvtANhL2vdtaTKRCFbV9yCbmvGTPEvf0jKAl9d7xlCwFNNhr99rj3HylFvz7EZJ4qZhaMxL-8VFg3CfViu7LFMuhhqmbpV0Ob_ExESys5XsSJmgKETPbt3yqcf-GuRSWBfxdJUMcJVWGzeMZXg47sM3YM5X5Yd1HSYypPBJNlb3xNriejM2Vg3GrhsIdH75err5YpiGWhoua1P3xjZbRUGU7F9zLBvjgvcf6-6sSU7mXRf2FmPtXssKFv2J0qm1tMPo7t2ebgLiaeM5oOrIcevt4MOTJ7Azu8iHp4xT9-_KkM0LG_lMoAIkGZ1SjhLkwFNd5aqVicpmTi4G7JOFIhBkQIwVtuBdZZBUhbkWSq_yRx8qXUWYismCX6UIKWO7QAu6PiNsQNwuE.%26bt%3Ddbl%26ch%3DAQEAEAABABQ9feQmuR-NuGETGsuH7JzIkm860vg6Pig.%26mac%3DAQEAEAABABTwZ3t3-ZORuwGlGfxXgpcF5Fb8obgtnRw.",
+        "OptanonConsent": "isGpcEnabled=0&datestamp=Tue+May+23+2023+10%3A51%3A32+GMT%2B0530+(India+Standard+Time)&version=202301.1.0&isIABGlobal=false&hosts=&consentId=965a3d3b-b152-4192-97e1-ffd09dd9ba13&interactionCount=1&landingPath=NotLandingPage&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1&AwaitingReconsent=false",
+        "SecureNetflixId": "v%3D2%26mac%3DAQEAEQABABQatmyBAsRK-PbwH0NDd85VoPSH-ijtJPY.%26dt%3D1684819293406",
+        "dsca": "anonymous",
+        "flwssn": "2a9b266b-0aff-4de8-a819-e57905a0c3d7",
+        "hasSeenCookieDisclosure": "true",
+        "memclid": "28c6a604-f4d0-4f4a-862f-b971818a2a7c",
+        "netflix-sans-bold-3-loaded": "true",
+        "netflix-sans-normal-3-loaded": "true",
+        "nfvdid": "BQFmAAEBEH8nVbl9HxK-OKbmuRbg3MhgymMGrZUMMBYNQ4WyNlbPHpf80wYhdV2tquItDolxyRnHzlCQgwukR0q3Bad2osg2Exia9aW5u8gHYtXqKc2tKCnGYiDkOpVNNseBe6Y-HkK1Rj5yXIY93-9GpskC-1Ck",
+        "pas": "%7B%22supplementals%22%3A%7B%22muted%22%3Atrue%7D%7D",
+        "profilesNewSession": "0"
+    },
+    "BUILD_IDENTIFIER": "vaf4f97f3"
+}
