@@ -114,9 +114,9 @@ config.VPN.torguard.http = "http://{email}:{passwd}@{ip}:{port}"
 # ~ BIN
 config.BIN = tuple_()
 if platform.system() == "Linux":
-    config.BIN.mp4decrypt = f"{config.PATHS.BINARY_PATH}/bento4/mp4decrypt"
-    config.BIN.mp4dump = f"{config.PATHS.BINARY_PATH}/bento4/mp4dump"
-    config.BIN.pandsdecryptor = f"{config.PATHS.BINARY_PATH}/bento4/mp4decrypt"
+    config.BIN.mp4decrypt = "mp4decrypt"
+    config.BIN.mp4dump = "mp4dump"
+    config.BIN.pandsdecryptor = "mp4decrypt"
     config.BIN.shaka_packager = f"{config.PATHS.BINARY_PATH}/decryptor/packager-linux"
     config.BIN.mp4box = "mp4box"
     config.BIN.ffmpeg = "ffmpeg"
