@@ -33,13 +33,13 @@ class GdriveStatus:
         if self.__obj.done:
             return
         LOGGER.info("update status")
-        text=f'**Name:** `{self.name()}`\n' \
-             f'**Progress:** `{self.progress()}`\n' \
-             f'**Downloaded:** `{self.processed_bytes()}`\n' \
-             f'**Total Size:** `{self.size()}`' \
-             f'**Speed:** `{self.speed()}`\n' \
-             f'**ETA:** `{self.eta()}`' \
-             f'**Engine:** `Google Drive`'
+        text=f'''**Name:** `{self.name()}`
+**Progress:** `{self.progress()}`
+**Downloaded:** `{self.processed_bytes()}`
+**Total Size:** `{self.size()}`
+**Speed:** `{self.speed()}`
+**ETA:** `{self.eta()}`
+**Engine:** `Google Drive`'''
         LOGGER.info(text)
         LOGGER.info("Trying.....")
         await self.message.edit(text=text)
