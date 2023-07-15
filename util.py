@@ -24,8 +24,8 @@ class setInterval:
 
     async def __set_interval(self):
         while True:
-            await sleep(self.interval)
             await self.action()
+            await sleep(self.interval)
 
     def cancel(self):
         self.task.cancel()
