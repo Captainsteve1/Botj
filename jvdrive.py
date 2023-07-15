@@ -33,47 +33,40 @@ class GdriveStatus:
         if self.__obj.done:
             return
         LOGGER.info("update status")
-        text=f'**Name:** `{self.name}`\n' \
-             f'**Status:** `{self.status}`\n' \
-             f'**Progress:** `{self.progress}`\n' \
-             f'**Downloaded:** `{self.processed_bytes}`\n' \
-             f'**Total Size:** `{self.size}`' \
-             f'**Speed:** `{self.speed}`\n' \
-             f'**ETA:** `{self.eta}`' \
+        text=f'**Name:** `{self.name()}`\n' \
+             f'**Status:** `{self.status()}`\n' \
+             f'**Progress:** `{self.progress()}`\n' \
+             f'**Downloaded:** `{self.processed_bytes()}`\n' \
+             f'**Total Size:** `{self.size()}`' \
+             f'**Speed:** `{self.speed()}`\n' \
+             f'**ETA:** `{self.eta()}`' \
              f'**Engine:** `Google Drive`'
         LOGGER.info(text)
-        await self.message.edit(text 
-            )
+        LOGGER.info("Trying.....")
+        await self.message.edit(text=text)
         LOGGER.info("status updated....")
 
-    @property
     def processed_bytes(self):
         return humanbytes(self.__obj.processed_bytes)
     
-    @property
     def size(self):
         return humanbytes(self.__size)
     
-    @property
     def name(self):
         return self.__obj.name
 
-    @property
     def progress_raw(self):
         try:
             return self.__obj.processed_bytes / self.__size * 100
         except:
             return 0
     
-    @property
     def progress(self):
         return f'{round(self.progress_raw(), 2)}%'
 
-    @property
     def speed(self):
         return f'{humanbytes(self.__obj.speed)}/s'
     
-    @property
     def eta(self):
         try:
             seconds = (self.__size - self.__obj.processed_bytes) / \
@@ -81,7 +74,7 @@ class GdriveStatus:
             return TimeFormatter(seconds)
         except:
             return '-'
-
+    
     def download(self):
         return self.__obj
 
