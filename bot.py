@@ -232,7 +232,7 @@ async def checkUserQueue(userId):
             return i
     return False
 
-@JVBot.on_message(filters.command(["pv", "zee5"], prefixes=[".", "/", "#","~"]) & static_auth_filter)
+@JVBot.on_message(filters.command(["pv", "zee5", "nf"], prefixes=[".", "/", "#","~"]) & static_auth_filter)
 async def queue_handler(bot, message):
     global task
     try:
@@ -264,7 +264,6 @@ async def status_cb(c, m):
         await m.answer(f"Position in QUEUE: {exist}\nTotal Pending: {len(QUEUE._queue)}", show_alert=True)
     else:
         return await m.message.edit("Your Task was not exits on Queue 🤷‍♂️")
-    
 
 
 @JVBot.on_callback_query(filters.regex("^queue_cancel$"))
@@ -392,36 +391,11 @@ async def main_handler(bot: JVBot, m: Message):
         await mydb.set_user(user_id=m.from_user.id, balance=videos)
     log.info(f"Dl completed for {m.from_user.mention} :: {newXfol}")
     for file in os.listdir(newXfol):
-        await upload_to_gdrive(os.path.join(newXfol, file), a_sts)
+        await upload_to_gdrive(bot, os.path.join(newXfol, file), a_sts)
     try:
         shutil.rmtree(newXfol)
     except Exception as e:
         log.error(e)
-
-@JVBot.on_message(filters.command(["nf"], prefixes=[".", "/", "#","~"]) & static_auth_filter)
-async def queue_handler(bot, message):
-    global task
-    try:
-        if message.from_user.id in Config.OWNER_ID:
-            return await main_handler(bot, message)
-        if not (await checkUserQueue(message.from_user.id)):
-            await QUEUE.put_nowait((bot, message))
-        else:
-            await message.reply_text("You are already in queue. Please wait for your turn")
-    except asyncio.QueueFull:
-        await message.reply_text("Queue Full 🥺\nPlease send task after few 2-5 minutes")
-    except Exception as e:
-        log.error(e)
-    else:
-        if not task:
-            task = asyncio.create_task(bg_worker())
-        await asyncio.sleep(0.5)
-        if len(QUEUE._queue) != 0:
-            buttons = [[
-                InlineKeyboardButton("Server Status 📊", callback_data="q_status"),
-                InlineKeyboardButton("Cancel ⛔", callback_data="queue_cancel")
-            ]]
-            await message.reply_text(text="Your Task added to **QUEUE**.\nThis method was implemented to reduce the overload on bot. So please cooperate with us.\n\n Press the following button to check the position in queue", reply_markup=InlineKeyboardMarkup(buttons), parse_mode="markdown")
 
 @JVBot.on_callback_query(filters.regex("^q_status$"))
 async def status_cb(c, m):
