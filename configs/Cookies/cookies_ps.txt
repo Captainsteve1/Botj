@@ -1,0 +1,15 @@
+# Netscape HTTP Cookie File
+# http://curl.haxx.se/rfc/cookie_spec.html
+# This is a generated file!  Do not edit.
+
+.primevideo.com	TRUE	/	FALSE	1717756179	i18n-prefs	USD
+.primevideo.com	TRUE	/	TRUE	1717756179	session-id	356-8275957-0101534
+.primevideo.com	TRUE	/	TRUE	1717756179	ubid-main-av	356-3836842-2616455
+.primevideo.com	TRUE	/	FALSE	1717756162	av-timezone	UTC
+.primevideo.com	TRUE	/	TRUE	1688658516	av-profile	cGlkPWFtem4xLmFjdG9yLnBlcnNvbi5vaWQuQTI1Vk1UWlg4NllGQzgmdGltZXN0YW1wPTE2ODYwNjY1MTcwMzkmdmVyc2lvbj12MQ.g3qKU_032Lt4cGfGsD6Y9hpqCzwVYJWuxi4Cl4LZveS-AAAAAQAAAABkf1VVcmF3AAAAAPgWC9WfHH8iB-olH_E9xQ
+.primevideo.com	TRUE	/	TRUE	1717756179	session-token	8SFYxDAefWH5J+EKZo652hqmjo9ox6vSbWO/khPcPt61QlUGu5lbOuViZbzBoVCVlfnwKq5D2QxJmicekK3ryrRPLVqXcksZYDcckfdrX5GJpxBSVkyivrfFmo9nkDRDI9QLrfWfCB7DHBqUyVuMRGBddf5hGJ8OYRbMMetDI43s8QEUj0Z22C/HZipC8A9Ccf/AOvtU5Zdy/Mr6gigSnfdjnsjOZAdGJ1aOgrowpaAZC9PA825XJ+7SrldlUI5p
+.primevideo.com	TRUE	/	TRUE	1717756179	x-main-av	"FcdQzWK@J1gYidlD1DwrD@NJsH?Tu5l7WHbjY1BBHXXCE7mP0eUxEeyJ4dCZ8MqG"
+.primevideo.com	TRUE	/	TRUE	1717756178	at-main-av	Atza|IwEBIEewL1k3EDfoqeBsin3oe6UV9CUA5g8MoeHGSqsRm1CgpQrzbPvdRhqzn8_4VFpy8wvUcZwEE-1NxlrGhL9g_NItOP1zMpVGHCeN8Qxu7W8pOxcnPTaE-Om6MQUVzWhst2BYKWDPFGYrSidOS6NmJvOOieV5tbTqdfYqoYuWZCHPRnlXmWNiblFayPUWk8HZU7iVuwjpW4p1DyvhUal8b1Mt66Q_mHK8-VpSaasS3nXj2opR0eya4mMQAH7OP40lYe0
+.primevideo.com	TRUE	/	TRUE	1717756178	sess-at-main-av	"dkpWTeJHxArBNqJQVMNsw1PJUKNxqTbXTqIhoIipz58="
+.primevideo.com	TRUE	/	TRUE	1717756179	session-id-time	2082787201l
+www.primevideo.com	FALSE	/	FALSE	1716460180	csm-hit	tb:s-QVA6W9M26YWA0S4T7GBS|1686220179841&t:1686220180724&adb:adblk_no
