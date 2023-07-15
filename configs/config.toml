@@ -1,0 +1,48 @@
+[OTHERS]
+GROUP = "ANToNi"
+ESN = 13701
+
+[VPN]
+[VPN.nordvpn]
+port = 89
+email = "email"
+passwd = "password"
+
+[VPN.private]
+port = 8080
+email = "email"
+passwd = "password"
+
+[VPN.torguard]
+port = 6060
+email = "email"
+passwd = "password"
+
+[CREDENTIALS]
+[CREDENTIALS.NETFLIX]
+email = "konakachiupender686@gmail.com"
+password = "yogi005@S"
+
+[CREDENTIALS.DISNEYPLUS]
+email = "email"
+password = "password"
+
+[CREDENTIALS.STARPLUS]
+email = "email"
+password = "password"
+
+[CREDENTIALS.STAN]
+email = "email"
+password = "password"
+
+[CREDENTIALS.HBOMAX]
+email = "email"
+password = "password"
+
+[CREDENTIALS.PEACOCK]
+email = "email"
+password = "password"
+
+[CREDENTIALS.RAKUTEN]
+email = "email"
+password = "password"
