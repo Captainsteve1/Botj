@@ -391,9 +391,8 @@ async def main_handler(bot: JVBot, m: Message):
         videos = 0 - filesCount
         await mydb.set_user(user_id=m.from_user.id, balance=videos)
     log.info(f"Dl completed for {m.from_user.mention} :: {newXfol}")
-    await a_sts.delete()
     for file in os.listdir(newXfol):
-        await upload_to_gdrive(os.path.join(newXfol, file), m)
+        await upload_to_gdrive(os.path.join(newXfol, file), a_sts)
     try:
         shutil.rmtree(newXfol)
     except Exception as e:
