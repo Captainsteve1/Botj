@@ -33,8 +33,7 @@ class GdriveStatus:
         if self.__obj.done:
             return
         LOGGER.info("update status")
-        await self.message.edit(
-                text=f'**Name:** `{self.name}`\n'
+        text=f'**Name:** `{self.name}`\n'
                 f'**Status:** `{self.status}`\n'
                 f'**Progress:** `{self.progress}`\n'
                 f'**Downloaded:** `{self.processed_bytes}`\n'
@@ -42,7 +41,10 @@ class GdriveStatus:
                 f'**Speed:** `{self.speed}`\n'
                 f'**ETA:** `{self.eta}`'
                 f'**Engine:** `Google Drive`'
+        LOGGER.info(text)
+        await self.message.edit(text 
             )
+        LOGGER.info("status updated....")
 
     @property
     def processed_bytes(self):
