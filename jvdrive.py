@@ -27,10 +27,12 @@ class GdriveStatus:
         self.__obj = obj
         self.__size = size
         self.message = message
+        LOGGER.info("started status")
     
     async def update(self):
         if self.__obj.done:
             return
+        LOGGER.info("update status")
         await self.message.edit(
                 text=f'**Name:** `{self.name}`\n'
                 f'**Status:** `{self.status}`\n'
