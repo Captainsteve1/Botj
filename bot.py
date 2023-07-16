@@ -343,7 +343,7 @@ async def video_handler(bot: Client, query: CallbackQuery):
             file_pth = USER_DATA[query.from_user.id][key]["folder"]
             file_pth = os.path.join(Config.TEMP_DIR, file_pth)
             await query.message.edit("Please wait downloading in progress")
-            rcode = await drm_client.downloader(video, list_audios)
+            rcode = await drm_client.downloader(video, list_audios, query.message)
             #await sts_.edit(f"Video downloaded in {file_pth}")
             try:
                 await query.message.edit(f"Please wait starting **gdrive** upload of `{jvname}`")
