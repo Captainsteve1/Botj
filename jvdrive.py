@@ -36,7 +36,7 @@ class GdriveStatus:
 **Progress:** `{self.progress()}`
 **Downloaded:** `{self.processed_bytes()}`
 **Total Size:** `{self.size()}`
-**Speed:** `{()}`
+**Speed:** `{self.speed()}`
 **ETA:** `{self.eta()}`
 **Engine:** `Google Drive`'''
             await self.message.edit(text=text)
