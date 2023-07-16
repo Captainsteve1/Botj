@@ -90,7 +90,7 @@ async def tg_subget_Handler(bot: JVBot, message: Message):
     await message.reply_text(msg_)
 
 
-@JVBot.on_message(filters.command(["info", "plan"]))
+@JVBot.on_message(filters.command(["myplan"]))
 async def tg_infoget_Handler(bot: JVBot, message: Message):
     user_id = message.from_user.id
     msg_ = await get_subscription(user_id)
@@ -155,8 +155,23 @@ async def start_handler(bot: JVBot, message: Message):
 
 I am OTT Downloader Bot. I can help you to download content from OTT Platforms.
 
-check /plans to buy""")
+Check /plans to buy""")
 
+@JVBot.on_message(filters.command("help") & static_auth_filter)
+async def help_handler(bot: JVBot, message: Message):
+   H_BUTTON = [
+    InlineKeyboardButton(
+        text='How To Use',
+        url='https://graph.org/David-07-16-3'
+    )
+   ]
+    
+    message.reply_text(text="**Here is the details how to use bot Click the button to know**"),
+        reply_markup=InlineKeyboardMarkup([H_BUTTON]),
+        disable_web_page_preview=True,
+        quote=True
+                      )
+                       
 @JVBot.on_message(filters.command("plans") & static_auth_filter)
 async def plans(bot: JVBot, message: Message):
     await message.reply_text(text='''DRM-DL BOT' s Plans
@@ -184,7 +199,7 @@ BDT - BKash, Nagad [Extra Charge]
 
 **Note - Don't Ask To Reduce Price..**
 
-• Contact @tony_rd_jr To Buy Supcription!!''')
+• Contact @Alex0512i To Buy Supcription!!''')
                        
 
 async def upload_to_gdrive(bot, input_str, sts_msg):
@@ -414,7 +429,7 @@ async def main_handler(bot: JVBot, m: Message):
     Xfol = f"{m.from_user.id}t_{time()}"
     Xfol = os.path.join(Config.TEMP_DIR, Xfol)
     cmd += f" -o {Xfol}"
-    a_sts = await m.reply_text("**Downloading...**")
+    a_sts = await m.reply_text("**Downloading ...**")
     err_res, t_res = await run_comman_d(cmd)
     log.info(err_res)
     filesCount = len(getListOfFiles(os.path.join(Xfol, "[OUTPUT]"), True))
