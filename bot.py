@@ -140,11 +140,18 @@ async def tg_auth_Handler(bot: JVBot, message: Message):
 User Details:
   user: {from_user.mention}
   id: `{from_user.id}`""")
-
     
 @JVBot.on_message(filters.command("plans") & static_auth_filter)
+async def start_handler(bot: JVBot, message: Message):
+message.reply_text(text="""Hello user👋,
+
+I am OTT Downloader Bot. I can help you to download content from OTT Platforms.
+
+check /plans to buy""")
+
+@JVBot.on_message(filters.command("plans") & static_auth_filter)
 async def plans(bot: JVBot, message: Message):
-    message.reply_text(text='''DRM-DL BOT' s Plans
+    await message.reply_text(text='''DRM-DL BOT' s Plans
 
 Plan Name - Starter 
 Price - 799₹ [All Otts]
