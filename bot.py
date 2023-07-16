@@ -411,14 +411,16 @@ async def main_handler(bot: JVBot, m: Message):
         return await drm_dl_client(bot, m, user_iput)
     cmd = "python3.9 wvripper.py " + user_iput
     log.info("Dl request from:" + str(m.from_user.id) + "::" + cmd)
-    Xfol = f"{m.from_user.id}_temp_{time()}"
+    Xfol = f"{m.from_user.id}t_{time()}"
+    Xfol = os.path.join(Config.TEMP_DIR, Xfol)
     cmd += f" -o {Xfol}"
     a_sts = await m.reply_text("**Downloading...**")
     err_res, t_res = await run_comman_d(cmd)
     log.info(err_res)
     filesCount = len(getListOfFiles(os.path.join(Xfol, "[OUTPUT]"), True))
     if filesCount >= 1:
-        newXfol = f"{m.from_user.id}_output_{time()}"
+        newXfol = f"{m.from_user.id}_o_{time()}"
+        newXfol = os.path.join(Config.TEMP_DIR, newXfol)
         os.makedirs(newXfol)
         os.rename(os.path.join(Xfol, "[OUTPUT]"), newXfol)
         try:
