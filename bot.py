@@ -221,6 +221,10 @@ async def tg_unauth_Handler(bot: JVBot, message: Message):
             from_user = await bot.get_users(int(user_id))
         except:
             return await message.reply_text("send along with I'd or reply to user msg")
+    try:
+        user_id = int(user_id)
+    except:
+        return await message.reply_text("send along with I'd or reply to user msg")
     await mydb.delete_user(user_id)
     await message.reply_text(f"Now {from_user.id} can not use me")
 
