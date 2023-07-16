@@ -202,5 +202,5 @@ def TimeFormatter(seconds: int) -> str:
     tmp = ((str(days) + "day, ") if days else "") + \
         ((str(hours) + "hour, ") if hours else "") + \
         ((str(minutes) + "min, ") if minutes else "") + \
-        ((str(seconds) + "sec, ") if seconds else "")
+        ((str(int(seconds)) + "sec, ") if seconds else "")
     return tmp[:-2]
