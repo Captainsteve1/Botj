@@ -351,7 +351,7 @@ class Zee5:
                 url, title, drmdata, nl = self.single(str(x['id']))
                 series_name = ReplaceDontLikeWord(unidecode.unidecode(x['name']))
                 spisode_number = series_name.rsplit(" ",1)[1]
-                OUTPUT = os.path.join(self.filedir, seriesname.replace(" ","."))
+                OUTPUT = os.path.join(self.filedir, seriesname)
                 MpdDATA = await self.parsempd(url)
                 keys = self.do_decrypt(MpdDATA["pssh"], drmdata, nl)
                 downloader = Downloader(url, OUTPUT)
@@ -367,7 +367,7 @@ class Zee5:
             self.COUNT_VIDEOS = 1
             url, title, drmdata, nl = self.SINGLE
             keys = self.do_decrypt(self.MpdDATA["pssh"], drmdata, nl)
-            OUTPUT = os.path.join(self.filedir, title.replace(" ","."))
+            OUTPUT = os.path.join(self.filedir, title)
             downloader = Downloader(url, OUTPUT)
             await downloader.set_key(keys)
             await downloader.set_data(self.MpdDATA)
@@ -485,7 +485,7 @@ class Downloader:
             FORM_DICT = LANGUAGE_FULL_FORM
         else:
             FORM_DICT = LANGUAGE_SHORT_FORM
-        out_file = f"{output_filename} {self.quality}p ZEE5 WEB-DL x264 [{'+'.join(FORM_DICT.get(x.lower(), x.capitalize()) for x in self.selected_audios)} (AAC 2.0)] Esub_ANToNi_.mkv".replace(" ",".")
+        out_file = f"{output_filename} {self.quality}p ZEE5 WEB-DL x264 [{' + '.join(FORM_DICT.get(x.lower(), x.capitalize()) for x in self.selected_audios)} (AAC 2.0)] Esub_ANToNi_.mkv"
         out_path = os.path.join(self.out_path, out_file)
         video_path = self.video_file
         cmd = f'ffmpeg -i "{video_path}" '
