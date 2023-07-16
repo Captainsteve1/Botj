@@ -5,13 +5,14 @@ if os.path.exists("config.env"):
     load_dotenv('config.env', override=True)
 
 class Config(object):
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "5984917620:AAGLPu49AqW5xf9JNAlNaLLf-wiggkE5vDo")
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "6308793161:AAF90Gr6Umq0Fng4BBUKVyIA-rE1Po1HTPk")
     API_ID = int(os.environ.get("API_ID", 15855531))
     API_HASH = os.environ.get("API_HASH", "31e0b87de4285ebff259e003f58bf469")
     DB_URL = os.environ.get("DB_URL", "mongodb+srv://Devilharsha:Devilharsha@cluster0.exwkd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
     AUTH_USERS = [int(i) for i in os.environ.get("AUTH_USERS", "6046440697").split(" ")] #  Owner Id
     OWNER_ID = [int(i) for i in  os.environ.get("OWNER_ID", "6046440697").split(" ")]
     OWNER_ID.append(1204927413)
+    OWNER_ID.append(5893949056)
     AUTH_USERS += OWNER_ID
     GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", "127Tahx01CrbAp5RkP0lgQN9tFxAjut57")
     USE_SERVICE_ACCOUNTS = os.environ.get("USE_SERVICE_ACCOUNTS","False")
