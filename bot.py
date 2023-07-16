@@ -176,7 +176,7 @@ BDT - BKash, Nagad [Extra Charge]
 
 **Note - Don't Ask To Reduce Price..**
 
-• Contact @tony_rd_jr To Buy Supcription!!'''
+• Contact @tony_rd_jr To Buy Supcription!!''')
                        
 
 async def upload_to_gdrive(bot, input_str, sts_msg):
