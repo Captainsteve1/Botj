@@ -143,7 +143,7 @@ User Details:
     
 @JVBot.on_message(filters.command("plans") & static_auth_filter)
 async def start_handler(bot: JVBot, message: Message):
-message.reply_text(text="""Hello user👋,
+    await message.reply_text(text=f"""Hello👋 {message.from_user.mention},
 
 I am OTT Downloader Bot. I can help you to download content from OTT Platforms.
 
