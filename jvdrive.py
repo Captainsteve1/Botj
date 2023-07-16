@@ -23,12 +23,12 @@ getLogger('googleapiclient.discovery').setLevel(ERROR)
 
 
 class GdriveStatus:
-    def __init__(self, obj, size, message):
+    def __init__(self, obj):
         self.__obj = obj
-        self.__size = size
-        self.message = message
+        self.__size = obj.total_size
+        self.message = obj.message
         LOGGER.info("started status")
-    
+
     async def update(self):
         if self.__obj.done:
             return
@@ -79,7 +79,7 @@ class GdriveStatus:
 
 class GoogleDriveHelper:
 
-    def __init__(self, name=None, path=None, bot_loop=None):
+    def __init__(self, name=None, path=None, bot_loop=None, message):
         self.__OAUTH_SCOPE = ['https://www.googleapis.com/auth/drive']
         self.__G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
         self.__G_DRIVE_BASE_DOWNLOAD_URL = "https://drive.google.com/uc?id={}&export=download"
@@ -97,7 +97,7 @@ class GoogleDriveHelper:
         self.__is_errored = False
         self.__status = None
         self.__updater = None
-        self.__update_interval = 3
+        self.__update_interval = 5
         self.__sa_index = 0
         self.__sa_count = 1
         self.__sa_number = 100
@@ -105,6 +105,7 @@ class GoogleDriveHelper:
         self.__file_processed_bytes = 0
         self.__processed_bytes = 0
         self.bot_loop = bot_loop
+        self.message = message
         self.name = name
         self.done = False
 
@@ -188,13 +189,15 @@ class GoogleDriveHelper:
         return self.__service.permissions().create(fileId=file_id, body=permissions, supportsAllDrives=True).execute()
 
 
-    async def __progress(self):
+    async def progress_show(self):
         if self.__status is not None:
             chunk_size = self.__status.total_size * \
                 self.__status.progress() - self.__file_processed_bytes
             self.__file_processed_bytes = self.__status.total_size * self.__status.progress()
             self.__processed_bytes += chunk_size
             self.__total_time += self.__update_interval
+            progress__ = GdriveStatus(self)
+            await progress__.update()
 
     def deletefile(self, link: str):
         try:
@@ -222,7 +225,8 @@ class GoogleDriveHelper:
         self.__is_uploading = True
         item_path = f"{self.__path}/{file_name}"
         LOGGER.info(f"Uploading: {item_path}")
-        self.__updater = setInterval(self.__update_interval, self.__progress, self.bot_loop)
+        self.total_size = size
+        self.__updater = setInterval(self.__update_interval, self.progress_show, self.bot_loop)
         try:
             if ospath.isfile(item_path):
                 if item_path.lower().endswith(tuple(GLOBAL_EXTENSION_FILTER)):
