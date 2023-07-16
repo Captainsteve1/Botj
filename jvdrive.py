@@ -34,7 +34,7 @@ class GdriveStatus:
         try:
             text=f'''**Name:** `{self.name()}`
 **Progress:** `{self.progress()}`
-**Downloaded:** `{self.processed_bytes()}`
+**Uploaded:** `{self.processed_bytes()}`
 **Total Size:** `{self.size()}`
 **Speed:** `{self.speed()}`
 **ETA:** `{self.eta()}`
