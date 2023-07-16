@@ -54,7 +54,7 @@ CHECK_ONCE = set()
 QUEUE = asyncio.Queue(5000)
 task = False
 
-async def get_subscription(_, __, m):
+async def filter_subscription(_, __, m):
     chkUser = await mydb.get_user(m.from_user.id)
     if m.from_user.id in Config.OWNER_ID:
         return True
@@ -70,7 +70,7 @@ async def get_subscription(_, __, m):
     await m.reply_text("You haven't subscribed yet, check using /info\n\ncontact owner to get subscription")
     return False
 
-static_auth_filter = filters.create(get_subscription)
+static_auth_filter = filters.create(filter_subscription)
 
 @JVBot.on_message(filters.command("sub") & filters.user(Config.OWNER_ID))
 async def tg_subget_Handler(bot: JVBot, message: Message):
@@ -104,7 +104,7 @@ async def get_subscription(user_id):
 **expires**: {expiryDate - (now_date-start_date).days} days
 Contact owner for updating subscription. """
     else:
-        msg = "No Subscription found...\n\ncontact owner to get your subscription now..."
+        msg = "No Subscription found...\n\ncheck /plans to get your subscription now..."
     return msg
 
 @JVBot.on_message(filters.command(["status", "stats"]) & static_auth_filter)
@@ -171,34 +171,27 @@ BDT - BKash, Nagad [Extra Charge]
 
 • Contact @tony_rd_jr To Buy Supcription!!'''
                        
-@JVBot.on_message(filters.command("gdrive") & static_auth_filter)
-async def gdrive_Uploader_Handler(bot: JVBot, message: Message):
-    try:
-        input_str = message.text.split(" ", 1)[1]
-        log.info("Gdrive UL request by " + str(message.from_user.id) + " for " + input_str)
-        input_str = os.path.join(os.getcwd(), input_str)
-    except:
-        await message.reply_text("send along with file path")
-        return
-    sts_msg = message.reply_text(f"**Uploading** `{input_str}` **to gdrive ....**")
-    await upload_to_gdrive(bot, input_str, sts_msg)
 
 async def upload_to_gdrive(bot, input_str, sts_msg):
     up_dir, up_name = input_str.rsplit('/', 1)
     gdrive = GoogleDriveHelper(up_name, up_dir, bot.loop, sts_msg)
     size = get_path_size(input_str)
-    #progress = GdriveStatus(gdrive, size, sts_msg)
-    #updater = setInterval(5, progress.update, bot.loop)
     success = await sync_to_async(bot.loop, gdrive.upload, up_name, size)
-    #updater.cancel()
     if success:
+        url_path = rutils.quote(f'{name}')
+        share_url = f'{Config.INDEX_LINK}/{url_path}'
+        if success[3] == "Folder":
+            share_url += '/'
         await sts_msg.edit(f"""**File Name:** `{success[4]}`
 **File Size:** `{success[1]}`
 **Type:** `{success[3]}`
 **Total Files:** `{success[2]}`
 
-[Link here]({success[0]})
-""")
+[Drive]({success[0]}) | [Index]({share_url})""",
+                           disable_web_page_preview=True
+          )
+    else:
+        await sts_msg.edit("Upload failed to gdrive")
 
 
 @JVBot.on_message(filters.command("unauth") & filters.user(Config.OWNER_ID))
@@ -330,10 +323,10 @@ async def video_handler(bot: Client, query: CallbackQuery):
             rcode = await drm_client.downloader(video, list_audios)
             #await sts_.edit(f"Video downloaded in {file_pth}")
             try:
-                await query.message.edit(f"Please wait starting **gdrive** upload of {jvname}")
+                await query.message.edit(f"Please wait starting **gdrive** upload of `{jvname}`")
                 sts = query.message
             except:
-                sts = await query.message.reply_text(f"Please wait starting **gdrive** upload of {jvname}")
+                sts = await query.message.reply_text(f"Please wait starting **gdrive** upload of `{jvname}`")
             for fileP in os.listdir(file_pth):
                 await upload_to_gdrive(bot, os.path.join(file_pth, fileP), sts)
             if os.path.exists(file_pth):
