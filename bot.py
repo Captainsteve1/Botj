@@ -164,13 +164,12 @@ async def help_handler(bot: JVBot, message: Message):
         text='How To Use',
         url='https://graph.org/David-07-16-3'
     )
-   ]
-    
-    message.reply_text(text="**Here is the details how to use bot Click the button to know**"),
+   ]    
+    message.reply_text(text="Here is the details how to use bot Click the button to know"),
         reply_markup=InlineKeyboardMarkup([H_BUTTON]),
         disable_web_page_preview=True,
         quote=True
-                      )
+                      
                        
 @JVBot.on_message(filters.command("plans") & static_auth_filter)
 async def plans(bot: JVBot, message: Message):
