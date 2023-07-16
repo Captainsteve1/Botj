@@ -141,7 +141,7 @@ User Details:
   user: {from_user.mention}
   id: `{from_user.id}`""")
     
-@JVBot.on_message(filters.command("plans") & static_auth_filter)
+@JVBot.on_message(filters.command("start") & static_auth_filter)
 async def start_handler(bot: JVBot, message: Message):
     await message.reply_text(text=f"""Hello👋 {message.from_user.mention},
 
