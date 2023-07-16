@@ -141,11 +141,36 @@ User Details:
   user: {from_user.mention}
   id: `{from_user.id}`""")
 
-@JVBot.on_message(filters.command("start") & static_auth_filter)
-async def start(bot: JVBot, message):
-    text = f"**Hi {message.from_user.mention}! I am one and only DRM Downloader Bot on Telegram**\n\n**I can help you to download content from OTT Platforms**\n\n**You can use me to Download DRM protected links to Google Drive**\n\n**I can download premium videos from Netflix and Prime Video**\n\n**To Buy Supcription Contact Aʟᴇx**\n\n**If You Found Any Issue Contact Support**"
-    message.reply_text(text)
     
+@JVBot.on_message(filters.command("plans") & static_auth_filter)
+async def plans(bot: JVBot, message: Message):
+    message.reply_text(text='''DRM-DL BOT' s Plans
+
+Plan Name - Starter 
+Price - 799₹ [All Otts]
+Drm Video Limit - Unlimited 
+Validity - 38 Days 
+
+Plan Name - Standard
+Price - 599₹ [All otts]
+Drm Video Limit - Unlimited
+Validity - 28 Days
+
+Payment Methods : 
+
+INR - PhonePe, Paytm, Google Pay [UPI]
+USD - PayPal,Crypto [Extra Charge]
+BDT - BKash, Nagad [Extra Charge]
+
+°°Term and Conditions
+
+• Payments are non-refundable, and we do not provide refunds. 
+• If the service ceases to function, no compensation is provided.
+
+**Note - Don't Ask To Reduce Price..**
+
+• Contact @tony_rd_jr To Buy Supcription!!'''
+                       
 @JVBot.on_message(filters.command("gdrive") & static_auth_filter)
 async def gdrive_Uploader_Handler(bot: JVBot, message: Message):
     try:
