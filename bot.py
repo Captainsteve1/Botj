@@ -149,7 +149,7 @@ User Details:
   user: {from_user.mention}
   id: `{from_user.id}`""")
     
-@JVBot.on_message(filters.command("start") & static_auth_filter)
+@JVBot.on_message(filters.command("start"))
 async def start_handler(bot: JVBot, message: Message):
     await message.reply_text(text=f"""Hello👋 {message.from_user.mention},
 
@@ -157,7 +157,7 @@ I am OTT Downloader Bot. I can help you to download content from OTT Platforms.
 
 Check /plans to buy""")
 
-@JVBot.on_message(filters.command("help") & static_auth_filter)
+@JVBot.on_message(filters.command("help"))
 async def help(bot: JVBot, message: Message):
    await message.reply_text(text="""Hello 👋
 
@@ -209,7 +209,7 @@ For custom audios use -al tel,tam,hin,eng etc..
 For more info contact @tony_rd_jr""", disable_web_page_preview=True)
                        
                        
-@JVBot.on_message(filters.command("plans") & static_auth_filter)
+@JVBot.on_message(filters.command("plans"))
 async def plans(bot: JVBot, message: Message):
     await message.reply_text(text='''DRM-DL BOT' s Plans
     
