@@ -349,18 +349,20 @@ class Zee5:
             self.COUNT_VIDEOS = len(episodes)
             for x in sorted(episodes, key=lambda k: int(k["number"])):
                 url, title, drmdata, nl = self.single(str(x['id']))
+                series_name = ReplaceDontLikeWord(unidecode.unidecode(x['name']))
+                spisode_number = series_name.rsplit(" ",1)[1]
                 OUTPUT = os.path.join(self.filedir, seriesname.replace(" ","."))
                 MpdDATA = await self.parsempd(url)
                 keys = self.do_decrypt(MpdDATA["pssh"], drmdata, nl)
                 downloader = Downloader(url, OUTPUT)
                 await downloader.set_key(keys)
                 await downloader.set_data(MpdDATA)
-                await self.edit(f"Downloading Episode: {x['number']}")
+                await self.edit(f"**Downloading Episode:** `{spisode_number}-{title}`")
                 await downloader.download(video, audios)
-                await self.edit(f"Decrypting Episode: {x['number']}")
+                await self.edit(f"**Decrypting Episode:** `{spisode_number}-{title}`")
                 await downloader.decrypt()
-                await self.edit(f"Muxing Episode: {x['number']}")
-                await downloader.merge(ReplaceDontLikeWord(unidecode.unidecode(x['name'])))
+                await self.edit(f"**Muxing Episode:** `{spisode_number}-{title}`")
+                await downloader.merge(series_name)
         else:
             self.COUNT_VIDEOS = 1
             url, title, drmdata, nl = self.SINGLE
@@ -369,11 +371,11 @@ class Zee5:
             downloader = Downloader(url, OUTPUT)
             await downloader.set_key(keys)
             await downloader.set_data(self.MpdDATA)
-            await self.edit(f"Downloading: `{title}`")
+            await self.edit(f"**Downloading:** `{title}`")
             await downloader.download(video, audios)
-            await self.edit(f"Decrypting: `{title}`")
+            await self.edit(f"**Decrypting:** `{title}`")
             await downloader.decrypt()
-            await self.edit(f"Muxing: `{title}`")
+            await self.edit(f"**Muxing:** `{title}`")
             await downloader.merge(title)
     
     async def edit(self, text):
