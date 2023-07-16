@@ -55,9 +55,9 @@ CHECK_ONCE = set()
 QUEUE = asyncio.Queue(5000)
 task = False
 
-async def filter_subscription(_, __, m):
-    chkUser = await mydb.get_user(m.from_user.id)
-    if m.from_user.id in Config.OWNER_ID:
+async def is_subscribed(user_id):
+    chkUser = await mydb.get_user(user_id)
+    if user_id in Config.OWNER_ID:
         return True
     if chkUser:
         expiryDate = chkUser.get("expiry")
@@ -68,6 +68,13 @@ async def filter_subscription(_, __, m):
         if (now_date-start_date).days < expiryDate:
             if balance > 0:
                 return True
+
+async def filter_subscription(_, __, m):
+    chkUser = await is_subscribed(m.from_user.id)
+    if m.from_user.id in Config.OWNER_ID:
+        return True
+    if chkUser:
+        return True
     await m.reply_text("You haven't subscribed yet, check using /info\n\ncontact owner to get subscription")
     return False
 
@@ -313,6 +320,10 @@ async def video_handler(bot: Client, query: CallbackQuery):
     if query.from_user.id not in USER_DATA:
         await query.answer("You are not authorized to use this button.", show_alert=True)
         return
+    check_user = await is_subscribed(query.from_user.id)
+    if not check_user:
+        await query.answer("You are not subscribed to use this bot.", show_alert=True)
+        return
     if key not in USER_DATA[query.from_user.id]:
         await query.answer("Session expired, please try again.", show_alert=True)
         return 
@@ -337,6 +348,7 @@ async def video_handler(bot: Client, query: CallbackQuery):
                 sts = await query.message.reply_text(f"Please wait starting **gdrive** upload of `{jvname}`")
             for fileP in os.listdir(file_pth):
                 await upload_to_gdrive(bot, os.path.join(file_pth, fileP), sts)
+            await mydb.set_user(user_id=query.from_user.id, balance = 0 - drm_client.COUNT_VIDEOS)
             if os.path.exists(file_pth):
                 shutil.rmtree(file_pth)
             #await query.message.edit("Error occured, contact @Jigarvarma2005 for fixing.")

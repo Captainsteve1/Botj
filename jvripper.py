@@ -97,6 +97,7 @@ class Zee5:
         self.USER_SELECTED_AUDIOS = []
         if not os.path.exists(self.filedir):
             os.makedirs(self.filedir, exist_ok=True)
+        self.COUNT_VIDEOS = 0
 
     def get_token(self):
         if Config.ZEE5_TOKEN:
@@ -331,9 +332,10 @@ class Zee5:
             list_of_videos.append(x["height"])
         return list_of_videos
     
-    async def downloader(self, video, audios):
+    async def downloader(self, video, audios, msg=None):
         if not os.path.isdir(self.filedir):
             os.makedirs(self.filedir, exist_ok=True)
+        self.msg = msg
         if self.SEASON:
             episodes = []
             seriesname, IDs = self.getseries(self.mainUrl)
@@ -344,6 +346,7 @@ class Zee5:
                 else:
                     if int(eps.get('number')) == int(self.from_ep):
                         episodes.append({'id': eps.get('id'), 'name': eps.get('name'), 'number': eps.get('number')})
+            self.COUNT_VIDEOS = len(episodes)
             for x in sorted(episodes, key=lambda k: int(k["number"])):
                 url, title, drmdata, nl = self.single(str(x['id']))
                 OUTPUT = os.path.join(self.filedir, seriesname.replace(" ","."))
@@ -352,20 +355,32 @@ class Zee5:
                 downloader = Downloader(url, OUTPUT)
                 await downloader.set_key(keys)
                 await downloader.set_data(MpdDATA)
+                await self.edit(f"Downloading Episode: {x['number']}")
                 await downloader.download(video, audios)
+                await self.edit(f"Decrypting Episode: {x['number']}")
                 await downloader.decrypt()
+                await self.edit(f"Muxing Episode: {x['number']}")
                 await downloader.merge(ReplaceDontLikeWord(unidecode.unidecode(x['name'])))
         else:
+            self.COUNT_VIDEOS = 1
             url, title, drmdata, nl = self.SINGLE
             keys = self.do_decrypt(self.MpdDATA["pssh"], drmdata, nl)
             OUTPUT = os.path.join(self.filedir, title.replace(" ","."))
             downloader = Downloader(url, OUTPUT)
             await downloader.set_key(keys)
             await downloader.set_data(self.MpdDATA)
+            await self.edit(f"Downloading: `{title}`")
             await downloader.download(video, audios)
+            await self.edit(f"Decrypting: `{title}`")
             await downloader.decrypt()
+            await self.edit(f"Muxing: `{title}`")
             await downloader.merge(title)
-
+    
+    async def edit(self, text):
+        try:
+            await self.msg.edit(text)
+        except:
+            pass
 
 class Downloader:
     def __init__(self, mpdUrl, out_path):
