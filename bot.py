@@ -158,8 +158,8 @@ I am OTT Downloader Bot. I can help you to download content from OTT Platforms.
 Check /plans to buy""")
 
 @JVBot.on_message(filters.command("help") & static_auth_filter)
-async def help_handler(bot: JVBot, message: Message):
-    message.reply_text(text='''Hello 👋
+async def help(bot: JVBot, message: Message):
+   await message.reply_text(text="""Hello 👋
 
 How to download? 👇
 
@@ -206,13 +206,13 @@ For Netflix:
 
 For custom audios use -al tel,tam,hin,eng etc..
 
-For more info contact @tony_rd_jr'''
+For more info contact @tony_rd_jr""")
                        
                        
 @JVBot.on_message(filters.command("plans") & static_auth_filter)
 async def plans(bot: JVBot, message: Message):
     await message.reply_text(text='''DRM-DL BOT' s Plans
-
+    
 Plan Name - Starter 
 Price - 799₹ [All Otts]
 Drm Video Limit - Unlimited 
