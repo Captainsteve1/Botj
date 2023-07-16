@@ -485,7 +485,7 @@ class Downloader:
             FORM_DICT = LANGUAGE_FULL_FORM
         else:
             FORM_DICT = LANGUAGE_SHORT_FORM
-        out_file = f"{output_filename} {self.quality}p ZEE5 WEB-DL x264 [{' + '.join(FORM_DICT.get(x.lower(), x.capitalize()) for x in self.selected_audios)} (AAC 2.0)] Esub_ANToNi_.mkv"
+        out_file = f"{output_filename} {self.quality}p ZEE5 WEB-DL x264 [{' + '.join(FORM_DICT.get(x.lower(), x.capitalize()) for x in self.selected_audios)} (AAC 2.0)] Esub_ROBOT_.mkv"
         out_path = os.path.join(self.out_path, out_file)
         video_path = self.video_file
         cmd = f'ffmpeg -i "{video_path}" '
@@ -497,7 +497,7 @@ class Downloader:
             cmd+=f"-map {i}:a? "
         step = 0
         for audio in audios:
-            cmd += f'-metadata:s:a:{step} title="AAC 2.0" '
+            cmd += f'-metadata:s:a:{step} title="ROBOT - [(AAC 2.0)]" '
             step += 1
         cmd += f"""-c:v copy -c:a copy "{out_path}"
         """
