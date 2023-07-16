@@ -79,7 +79,7 @@ class GdriveStatus:
 
 class GoogleDriveHelper:
 
-    def __init__(self, name=None, path=None, bot_loop=None, message):
+    def __init__(self, name=None, path=None, bot_loop=None, message=None):
         self.__OAUTH_SCOPE = ['https://www.googleapis.com/auth/drive']
         self.__G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
         self.__G_DRIVE_BASE_DOWNLOAD_URL = "https://drive.google.com/uc?id={}&export=download"
