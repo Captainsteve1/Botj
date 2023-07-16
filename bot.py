@@ -161,7 +161,7 @@ async def gdrive_Uploader_Handler(bot: JVBot, message: Message):
 async def upload_to_gdrive(bot, input_str, sts_msg):
     up_dir, up_name = input_str.rsplit('/', 1)
     gdrive = GoogleDriveHelper(up_name, up_dir, bot.loop, sts_msg)
-    size = humanbytes(get_path_size(input_str))
+    size = get_path_size(input_str)
     #progress = GdriveStatus(gdrive, size, sts_msg)
     #updater = setInterval(5, progress.update, bot.loop)
     success = await sync_to_async(bot.loop, gdrive.upload, up_name, size)
