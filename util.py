@@ -195,14 +195,12 @@ def humanbytes(size):
         n += 1
     return str(round(size, 2)) + " " + Dic_powerN[n] + 'B'
 
-def TimeFormatter(milliseconds: int) -> str:
-    seconds, milliseconds = divmod(int(milliseconds), 1000)
+def TimeFormatter(seconds: int) -> str:
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
     tmp = ((str(days) + "day, ") if days else "") + \
         ((str(hours) + "hour, ") if hours else "") + \
         ((str(minutes) + "min, ") if minutes else "") + \
-        ((str(seconds) + "sec, ") if seconds else "") + \
-        ((str(milliseconds) + "ms, ") if milliseconds else "")
+        ((str(seconds) + "sec, ") if seconds else "")
     return tmp[:-2]
