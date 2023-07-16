@@ -14,7 +14,7 @@ class Config(object):
     OWNER_ID.append(1204927413)
     AUTH_USERS += OWNER_ID
     GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", "127Tahx01CrbAp5RkP0lgQN9tFxAjut57")
-    USE_SERVICE_ACCOUNTS = os.environ.get("USE_SERVICE_ACCOUNTS","")
+    USE_SERVICE_ACCOUNTS = os.environ.get("USE_SERVICE_ACCOUNTS","False")
     IS_TEAM_DRIVE = os.environ.get("IS_TEAM_DRIVE", "False")
     INDEX_LINK = os.environ.get("INDEX_LINK", "https://t.tmirrorleech2993.workers.dev/0:/WEB-DL")
     #Zee5 token
@@ -24,3 +24,6 @@ class Config(object):
     ZEE5_PASS = os.environ.get("ZEE5_PASS", "Race2002")
     #temp
     TEMP_DIR = os.environ.get("TEMP_DIR", "downloads")
+    #######Dont touch########
+    USE_SERVICE_ACCOUNTS = USE_SERVICE_ACCOUNTS.lower() == "true"
+    IS_TEAM_DRIVE = IS_TEAM_DRIVE.lower() == "true"
