@@ -198,7 +198,7 @@ async def upload_to_gdrive(bot, input_str, sts_msg):
         if success[3] == "Folder":
             share_url += '/'
         await sts_msg.edit(f"""**File Name:** `{success[4]}`
-**File Size:** `{success[1]}`
+**Size:** `{humanbytes(success[1])}`
 **Type:** `{success[3]}`
 **Total Files:** `{success[2]}`
 
