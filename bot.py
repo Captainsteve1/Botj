@@ -18,6 +18,7 @@ from expiringdict import ExpiringDict
 from time import time
 import random
 from uvloop import install
+from urllib.parse import quote
 
 install()
 
@@ -185,7 +186,7 @@ async def upload_to_gdrive(bot, input_str, sts_msg):
     size = get_path_size(input_str)
     success = await sync_to_async(bot.loop, gdrive.upload, up_name, size)
     if success:
-        url_path = rutils.quote(f'{name}')
+        url_path = quote(f'{name}')
         share_url = f'{Config.INDEX_LINK}/{url_path}'
         if success[3] == "Folder":
             share_url += '/'
