@@ -34,13 +34,16 @@ class GdriveStatus:
             return
         LOGGER.info("update status")
         await self.message.edit(text=f"progress-{time()}")
-        text=f'''**Name:** `{self.name()}`
+        try:
+            text=f'''**Name:** `{self.name()}`
 **Progress:** `{self.progress()}`
 **Downloaded:** `{self.processed_bytes()}`
 **Total Size:** `{self.size()}`
-**Speed:** `{self.speed()}`
+**Speed:** `{()}`
 **ETA:** `{self.eta()}`
 **Engine:** `Google Drive`'''
+        except Exception as e:
+            LOGGER.error(e, exc_info=True)
         LOGGER.info(text)
         LOGGER.info("Trying.....")
         await self.message.edit(text=text)
