@@ -27,13 +27,10 @@ class GdriveStatus:
         self.__obj = obj
         self.__size = obj.total_size
         self.message = obj.message
-        LOGGER.info("started status")
 
     async def update(self):
         if self.__obj.done:
             return
-        LOGGER.info("update status")
-        await self.message.edit(text=f"progress-{time()}")
         try:
             text=f'''**Name:** `{self.name()}`
 **Progress:** `{self.progress()}`
@@ -42,12 +39,9 @@ class GdriveStatus:
 **Speed:** `{()}`
 **ETA:** `{self.eta()}`
 **Engine:** `Google Drive`'''
+            await self.message.edit(text=text)
         except Exception as e:
             LOGGER.error(e, exc_info=True)
-        LOGGER.info(text)
-        LOGGER.info("Trying.....")
-        await self.message.edit(text=text)
-        LOGGER.info("status updated....")
 
     def processed_bytes(self):
         return humanbytes(self.__obj.processed_bytes)
