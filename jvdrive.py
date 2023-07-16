@@ -33,6 +33,7 @@ class GdriveStatus:
         if self.__obj.done:
             return
         LOGGER.info("update status")
+        await self.message.edit(text=f"progress-{time()}")
         text=f'''**Name:** `{self.name()}`
 **Progress:** `{self.progress()}`
 **Downloaded:** `{self.processed_bytes()}`
