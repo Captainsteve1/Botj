@@ -159,17 +159,55 @@ Check /plans to buy""")
 
 @JVBot.on_message(filters.command("help") & static_auth_filter)
 async def help_handler(bot: JVBot, message: Message):
-   H_BUTTON = [
-    InlineKeyboardButton(
-        text='How To Use',
-        url='https://graph.org/David-07-16-3'
-    )
-   ]    
-    message.reply_text(text="Here is the details how to use bot Click the button to know"),
-        reply_markup=InlineKeyboardMarkup([H_BUTTON]),
-        disable_web_page_preview=True,
-        quote=True
-                      
+    message.reply_text(text='''Hello 👋
+
+How to download? 👇
+
+For Zee5 (Movies)
+
+==> Movie
+
+/zee5 movie_id 
+Ex: /zee5 0-0-1z5318993
+
+==> Series 
+
+/Zee5 series_id:season_number:start_episode-end_episode
+Ex: /zee5 0-6-4z5199975:1:3-6
+
+For PrimeVideo:
+
+==> Movie
+
+/pv https://www.primevideo.com/detail/0SUJLFBDCKESPBD4G1HS131GTW -q 1080 -vp CBR -al all -sl en
+
+For custom audios use -al te,ta,hi,en etc... 
+
+==> Series
+
+/pv  https://www.primevideo.com/detail/0JV5DHR0ETGXOJNHQPD28DBI2T -s 1 -e 1~ -al all -sl en -q 1080 -vp CBR
+
+-vp HEVC
+-vp CVBR
+-vp CBR 
+
+For Netflix:
+
+==> Movie
+
+/nf https://www.netflix.com/watch/80189685 -q 1080 -vp MAIN -al tel -sl eng 
+ 
+-vp MAIN
+-vp HIGH 
+
+==> Series
+
+/nf https://www.netflix.com/watch/80189685 -q 480 -vp MAIN -al all -sl eng -s 1 -e 1~
+
+For custom audios use -al tel,tam,hin,eng etc..
+
+For more info contact @tony_rd_jr'''
+                       
                        
 @JVBot.on_message(filters.command("plans") & static_auth_filter)
 async def plans(bot: JVBot, message: Message):
