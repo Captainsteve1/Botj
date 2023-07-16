@@ -206,7 +206,7 @@ For Netflix:
 
 For custom audios use -al tel,tam,hin,eng etc..
 
-For more info contact @tony_rd_jr""")
+For more info contact @tony_rd_jr""", disable_web_page_preview=True)
                        
                        
 @JVBot.on_message(filters.command("plans") & static_auth_filter)
