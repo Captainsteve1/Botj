@@ -80,10 +80,10 @@ class Zee5:
             self.raw = self.mainUrl[1].split(':', 1)
             if len(self.raw) == 2:
                 self.raw = self.raw[1]
-                mainUrl = self.raw[0]
+                self.mainUrl = self.raw[0]
             else:
                 self.raw = ""
-            self.mainUrl = mainUrl.split('/')
+            self.mainUrl = self.mainUrl.split('/')
             try:
                 self.mainUrl = self.mainUrl[6]
             except Exception as e:
