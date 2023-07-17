@@ -83,6 +83,7 @@ class Zee5:
                 self.mainUrl = self.raw[0]
             else:
                 self.raw = ""
+                self.mainUrl = self.raw[0]
             self.mainUrl = self.mainUrl.split('/')
             try:
                 self.mainUrl = self.mainUrl[6]
