@@ -10,7 +10,7 @@ class Config(object):
     API_HASH = os.environ.get("API_HASH", "31e0b87de4285ebff259e003f58bf469")
     DB_URL = os.environ.get("DB_URL", "mongodb+srv://jaajsjsksjwbwbwpq:blN8PY4Z2LLtBHHZ@cluster0.ffrx2h5.mongodb.net/?retryWrites=true&w=majority")
     OWNER_ID = [int(i) for i in  os.environ.get("OWNER_ID", "6046440697").split(" ")]
-    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1001482656645"))
+    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-10019708036111"))
     GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", "127Tahx01CrbAp5RkP0lgQN9tFxAjut57")
     USE_SERVICE_ACCOUNTS = os.environ.get("USE_SERVICE_ACCOUNTS","False")
     IS_TEAM_DRIVE = os.environ.get("IS_TEAM_DRIVE", "False")
