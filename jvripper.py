@@ -76,20 +76,20 @@ class Zee5:
     def __init__(self, mainUrl, filedir):
         self.raw = ""
         if "https://" in mainUrl or "http://" in mainUrl:
-            self.mainUrl = mainUrl.split(':', 1)
-            self.raw = self.mainUrl[1].split(':', 1)
+            mainUrl = mainUrl.split(':', 1)
+            self.raw = mainUrl[1].split(':', 1)
             if len(self.raw) == 2:
                 self.raw = self.raw[1]
-                self.mainUrl = self.raw[0]
+                mainUrl = self.raw[0]
             else:
                 self.raw = ""
-                self.mainUrl = self.raw[0]
-            self.mainUrl = self.mainUrl.split('/')
+                mainUrl = self.raw[0]
             try:
-                self.mainUrl = self.mainUrl[6]
+                self.mainUrl = mainUrl.split('/')[6]
             except Exception as e:
-                logging.info(self.mainUrl)
+                logging.info(mainUrl)
                 logging.error(e, exc_info=True)
+                raise Exception(e)
         else:
             if ":" in mainUrl:
                 mainUrl, self.raw = mainUrl.split(':', 1)
