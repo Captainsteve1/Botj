@@ -1,5 +1,5 @@
 [OTHERS]
-GROUP = "ANToNi"
+GROUP = "ROBOT"
 ESN = 13701
 
 [VPN]
@@ -21,7 +21,7 @@ passwd = "password"
 [CREDENTIALS]
 [CREDENTIALS.NETFLIX]
 email = "konakachiupender686@gmail.com"
-password = "yogi005@S"
+password = "RS@9063"
 
 [CREDENTIALS.DISNEYPLUS]
 email = "email"
