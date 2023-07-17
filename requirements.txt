@@ -7,7 +7,7 @@ psutil
 motor
 python-dotenv
 python-magic
-python-magic-bin==0.4.14
+
 requests
 tenacity
 pyrogram
