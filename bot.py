@@ -75,7 +75,7 @@ async def filter_subscription(_, __, m):
         return True
     if chkUser:
         return True
-    await m.reply_text("You haven't subscribed yet, check using /info\n\ncontact owner to get subscription")
+    await m.reply_text("You haven't subscribed yet, check using /plans\n\ncontact owner to get subscription")
     return False
 
 static_auth_filter = filters.create(filter_subscription)
@@ -160,31 +160,30 @@ Check /plans to buy""")
 @JVBot.on_message(filters.command("help"))
 async def help(bot: JVBot, message: Message):
    await message.reply_text(text="""**Commands for PRIME_VIDEO/NETFLIX 👇**
-===========<>===========
--q quality
+
+[-q quality
 -sl subtitles
--al audios spilt with ,
+-al audios spilt with 
 -s season number
 -e 1~ download all episodes
 -vp {AVC,HEVC,HDR,DOLBY_VISION,VP9,UHD,CBR,CVBR,MAIN,HIGH}] 
-===========<>===========
+
 **Ex:** 
-`/pv https://www.primevideo.com/detail/0SUJLFBDCKESPBD4G1HS131GTW -q 1080 -vp HEVC -al hi,en -sl en'
-===========<>===========
-`/pv  https://www.primevideo.com/detail/0JV5DHR0ETGXOJNHQPD28DBI2T -s 1 -e 1~ -al hi,en -sl en -q 1080 -vp HEVC`
-===========<>===========
-Ex: 
+[`/pv https://www.primevideo.com/detail/0SUJLFBDCKESPBD4G1HS131GTW -q 1080 -vp HEVC -al hi,en -sl en`]
+
+[`/pv  https://www.primevideo.com/detail/0JV5DHR0ETGXOJNHQPD28DBI2T -s 1 -e 1~ -al hi,en -sl en -q 1080 -vp HEVC`]
+
+Ex:
 Movie:👇
-`/nf https://www.netflix.com/watch/80189685 -q 480 -vp MAIN -al all -sl eng -s 1 -e 1~`
-===========<>===========
+[`/nf https://www.netflix.com/watch/80189685 -q 480 -vp MAIN -al all -sl eng -s 1 -e 1~`]
+
 Series: 👇
-`/nf https://www.netflix.com/watch/81098494 -q 1080 -vp MAIN -al all -sl eng`
-===========<>===========
-**Ex:**
-`/zee5 0-0-1z5318993`
-**===========<>===========**
-`/zee5 0-6-4z5199975:1:3-61`
-`==> series_id:season_number:start_episode-end_episode`
+[`/nf https://www.netflix.com/watch/81098494 -q 1080 -vp MAIN -al all -sl eng`]
+
+[`/zee5 0-0-1z5318993`]
+
+[`/zee5 0-6-4z5199975:1:3-61`]
+==> [`series_id:season_number:start_episode-end_episode`]
 
 **Contact @tony_rd_jr for more!**""", disable_web_page_preview=True)
                        
