@@ -76,7 +76,8 @@ class Zee5:
     def __init__(self, mainUrl, filedir):
         self.raw = ""
         if "https://" in mainUrl or "http://" in mainUrl:
-            self.raw = mainUrl.split(':',1)
+            self.mainUrl = mainUrl.split(':', 1)
+            self.raw = self.split(':', 1)
             if len(self.raw) == 2:
                 self.raw = self.raw[1]
                 mainUrl = self.raw[0]
