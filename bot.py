@@ -157,6 +157,18 @@ I am OTT Downloader Bot. I can help you to download content from OTT Platforms.
 
 Check /plans to buy""")
 
+@JVBot.on_message(filters.command("availableotts"))
+async def otts(bot: JVBot, message: Message):
+    await message.reply_text(text="""****Available Otts**
+
+`• Zee5
+• Hotstar(in the way)
+• Netflix
+• Prime Video 
+• Lionsgate Play
+• Erosnow
+• Vrott`""")
+    
 @JVBot.on_message(filters.command("help"))
 async def help(bot: JVBot, message: Message):
    await message.reply_text(text="""**Commands for PRIME_VIDEO/NETFLIX 👇**
@@ -180,9 +192,9 @@ Movie:👇
 Series: 👇
 [`/nf https://www.netflix.com/watch/81098494 -q 1080 -vp MAIN -al all -sl eng`]
 
-[`/zee5 0-0-1z5318993`]
+[`/zee5 https://www.zee5.com/movies/details/vimanam/0-0-1z5387314`]
 
-[`/zee5 0-6-4z5199975:1:3-61`]
+[`/zee5 https://www.zee5.com/web-series/details/mukhbir-the-story-of-a-spy/0-6-4z5199975:1:1-3`]
 ==> [`series_id:season_number:start_episode-end_episode`]
 
 **Contact @tony_rd_jr for more!**""", disable_web_page_preview=True)
