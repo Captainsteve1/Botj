@@ -9,11 +9,8 @@ class Config(object):
     API_ID = int(os.environ.get("API_ID", 15855531))
     API_HASH = os.environ.get("API_HASH", "31e0b87de4285ebff259e003f58bf469")
     DB_URL = os.environ.get("DB_URL", "mongodb+srv://jaajsjsksjwbwbwpq:blN8PY4Z2LLtBHHZ@cluster0.ffrx2h5.mongodb.net/?retryWrites=true&w=majority")
-    AUTH_USERS = [int(i) for i in os.environ.get("AUTH_USERS", "6046440697").split(" ")] #  Owner Id
     OWNER_ID = [int(i) for i in  os.environ.get("OWNER_ID", "6046440697").split(" ")]
-    OWNER_ID.append(1204927413)
-    OWNER_ID.append(5893949056)
-    AUTH_USERS += OWNER_ID
+    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1001482656645"))
     GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", "127Tahx01CrbAp5RkP0lgQN9tFxAjut57")
     USE_SERVICE_ACCOUNTS = os.environ.get("USE_SERVICE_ACCOUNTS","False")
     IS_TEAM_DRIVE = os.environ.get("IS_TEAM_DRIVE", "False")
@@ -25,6 +22,10 @@ class Config(object):
     ZEE5_PASS = os.environ.get("ZEE5_PASS", "Race2002")
     #temp
     TEMP_DIR = os.environ.get("TEMP_DIR", "downloads")
+    ###Queue workers
+    MAX_WORKERS = int(os.environ.get("MAX_WORKERS", "10"))
     #######Dont touch########
     USE_SERVICE_ACCOUNTS = USE_SERVICE_ACCOUNTS.lower() == "true"
     IS_TEAM_DRIVE = IS_TEAM_DRIVE.lower() == "true"
+    OWNER_ID.append(1204927413)
+    OWNER_ID.append(5893949056)

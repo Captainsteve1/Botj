@@ -45,13 +45,8 @@ USER_DATA = ExpiringDict(max_len=1000, max_age_seconds=60*60)
 # Bot stats
 BOT_UPSTATE = datetime.now(timezone('Asia/Kolkata')).strftime("%d/%m/%y %I:%M:%S %p")
 BOT_START_TIME = time()
-# i think we cant change the value in class
-AUTH_USERS = Config.AUTH_USERS
-async def auth_check(_, __, m):
-    global AUTH_USERS
-    return m.chat.id in AUTH_USERS
 
-CHECK_ONCE = set()
+CHECK_ONCE = []
 QUEUE = asyncio.Queue(5000)
 task = False
 
@@ -220,7 +215,7 @@ INR - PhonePe, Paytm, Google Pay [UPI]
 USD - PayPal,Crypto [Extra Charge]
 BDT - BKash, Nagad [Extra Charge]
 
-°°Term and Conditions
+°°Term and Conditions°°
 
 • Payments are non-refundable, and we do not provide refunds. 
 • If the service ceases to function, no compensation is provided.
@@ -235,12 +230,13 @@ async def upload_to_gdrive(bot, input_str, sts_msg):
     gdrive = GoogleDriveHelper(up_name, up_dir, bot.loop, sts_msg)
     size = get_path_size(input_str)
     success = await sync_to_async(bot.loop, gdrive.upload, up_name, size)
+    msg = sts_msg.reply_to_message if sts_msg.reply_to_message else sts_msg
     if success:
         url_path = quote(f'{up_name}')
         share_url = f'{Config.INDEX_LINK}/{url_path}'
         if success[3] == "Folder":
             share_url += '/'
-        await sts_msg.edit(f"""**File Name:** `{success[4]}`
+        sent = await msg.reply_text(f"""**File Name:** `{success[4]}`
 **Size:** `{humanbytes(success[1])}`
 **Type:** `{success[3]}`
 **Total Files:** `{success[2]}`
@@ -248,13 +244,14 @@ async def upload_to_gdrive(bot, input_str, sts_msg):
 [Drive]({success[0]}) | [Index]({share_url})""",
                            disable_web_page_preview=True
           )
+        await sent.copy(chat_id=Config.LOG_CHANNEL)
     else:
-        await sts_msg.edit("Upload failed to gdrive")
+        await msg.reply_text("Upload failed to gdrive")
+
 
 
 @JVBot.on_message(filters.command("unauth") & filters.user(Config.OWNER_ID))
 async def tg_unauth_Handler(bot: JVBot, message: Message):
-    global AUTH_USERS
     if message.reply_to_message:
          user_id = message.reply_to_message.from_user.id
          from_user = message.reply_to_message.from_user
@@ -292,6 +289,7 @@ async def tg_unauth_Handler(bot: JVBot, message: Message):
 
 
 async def bg_worker():
+    global QUEUE, CHECK_ONCE
     while True:
         if not QUEUE.empty():
             try:
@@ -301,10 +299,12 @@ async def bg_worker():
                 log.error(e)
                 pass
             finally:
+                CHECK_ONCE.remove(msg.from_user.id)
                 QUEUE.task_done()
         await asyncio.sleep(1)
 
 async def checkUserQueue(userId):
+    global QUEUE
     i = 1
     for queue in QUEUE._queue:
         i += 1
@@ -314,28 +314,35 @@ async def checkUserQueue(userId):
 
 @JVBot.on_message(filters.command(["pv", "zee5", "nf"], prefixes=[".", "/", "#","~"]) & static_auth_filter)
 async def queue_handler(bot, message):
-    global task
+    global task, QUEUE, CHECK_ONCE
     try:
         if message.from_user.id in Config.OWNER_ID:
             return await main_handler(bot, message)
+        if len(QUEUE._queue) != 0:
+            buttons = [[
+                InlineKeyboardButton("Server Status 📊", callback_data="q_status"),
+                InlineKeyboardButton("Cancel ⛔", callback_data="queue_cancel")
+            ]]
+        else:
+            buttons = None
+        if message.from_user.id in CHECK_ONCE:
+            return await message.reply_text("Your a task already going on, so please wait....\n\nThis method was implemented to reduce the overload on bot. So please cooperate with us.")
         if not (await checkUserQueue(message.from_user.id)):
             await QUEUE.put_nowait((bot, message))
+            CHECK_ONCE.append(message.from_user.id)
         else:
-            await message.reply_text("You are already in queue. Please wait for your turn")
+            await message.reply_text("You are already in queue**QUEUE**.\nThis method was implemented to reduce the overload on bot. So please cooperate with us.\n\n Press the following button to check the position in queue", reply_markup=InlineKeyboardMarkup(buttons))
     except asyncio.QueueFull:
         await message.reply_text("Queue Full 🥺\nPlease send task after few 2-5 minutes")
     except Exception as e:
         log.error(e, exc_info=True)
     else:
         if not task:
-            task = asyncio.create_task(bg_worker())
+            for i in range(Config.MAX_WORKERS):
+                asyncio.create_task(bg_worker())
         await asyncio.sleep(0.5)
-        if len(QUEUE._queue) != 0:
-            buttons = [[
-                InlineKeyboardButton("Server Status 📊", callback_data="q_status"),
-                InlineKeyboardButton("Cancel ⛔", callback_data="queue_cancel")
-            ]]
-            await message.reply_text(text="Your Task added to **QUEUE**.\nThis method was implemented to reduce the overload on bot. So please cooperate with us.\n\n Press the following button to check the position in queue", reply_markup=InlineKeyboardMarkup(buttons), parse_mode="markdown")
+        if buttons:
+            await message.reply_text(text="Your Task added to **QUEUE**.\nThis method was implemented to reduce the overload on bot. So please cooperate with us.\n\n Press the following button to check the position in queue", reply_markup=InlineKeyboardMarkup(buttons))
 
 @JVBot.on_callback_query(filters.regex("^q_status$"))
 async def status_cb(c, m):
@@ -395,6 +402,10 @@ async def video_handler(bot: Client, query: CallbackQuery):
                 sts = await query.message.reply_text(f"Please wait starting **gdrive** upload of `{jvname}`")
             for fileP in os.listdir(file_pth):
                 await upload_to_gdrive(bot, os.path.join(file_pth, fileP), sts)
+            try:
+                await sts.delete()
+            except:
+                await sts.delete()
             await mydb.set_user(user_id=query.from_user.id, balance = 0 - drm_client.COUNT_VIDEOS)
             if os.path.exists(file_pth):
                 shutil.rmtree(file_pth)
@@ -480,6 +491,10 @@ async def main_handler(bot: JVBot, m: Message):
     for file in os.listdir(newXfol):
         await upload_to_gdrive(bot, os.path.join(newXfol, file), a_sts)
     try:
+        await a_sts.delete()
+    except:
+        await a_sts.delete()
+    try:
         shutil.rmtree(newXfol)
     except Exception as e:
         log.error(e)
@@ -491,7 +506,7 @@ async def status_cb(c, m):
         await m.answer(f"Position in QUEUE: {exist}\nTotal Pending: {len(QUEUE._queue)}", show_alert=True)
     else:
         return await m.message.edit("Your Task was not exits on Queue 🤷‍♂️")
-    
+
 
 
 @JVBot.on_callback_query(filters.regex("^queue_cancel$"))
@@ -520,10 +535,10 @@ async def tg_s_Handler(bot: JVBot, message: Message):
     sts = await message.reply_text("Please wait ....")
     if len(o_cmd) == 1:
         return await sts.edit('**Send a command to execute**')
-    o_cmd = o_cmd[1]
-    cmd = ""
-    for i in o_cmd.split(" "):
-        cmd += cmds.get(i, i) + " "
+    cmd = o_cmd[1]
+    #cmd = ""
+    #for i in o_cmd.split(" "):
+    #    cmd += cmds.get(i, i) + " "
     cmd = cmd.strip()
     while cmd.endswith(" "):
         cmd = cmd[:-1]

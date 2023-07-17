@@ -76,12 +76,19 @@ def ReplaceDontLikeWord(X):
 class Zee5:
     def __init__(self, mainUrl, filedir):
         self.raw = ""
-        if "https://" in mainUrl:
+        if "https://" in mainUrl or "http://" in mainUrl:
             self.raw = mainUrl.split(':',1)
             if len(self.raw) == 2:
                 self.raw = self.raw[1]
                 mainUrl = self.raw[0]
-            self.mainUrl = mainUrl.split('/')[6]
+            else:
+                self.raw = ""
+            self.mainUrl = mainUrl.split('/')
+            try:
+                self.mainUrl = self.mainUrl[6]
+            except Exception as e:
+                logging.info(self.mainUrl)
+                logging.error(e, exc_info=True)
         else:
             if ":" in mainUrl:
                 mainUrl, self.raw = mainUrl.split(':', 1)
