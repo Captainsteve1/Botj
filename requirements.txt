@@ -7,7 +7,6 @@ psutil
 motor
 python-dotenv
 python-magic
-
 requests
 tenacity
 pyrogram
