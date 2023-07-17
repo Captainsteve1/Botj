@@ -14,7 +14,6 @@ import xmltodict, shutil, os, json, time, base64, requests, sys, re, titlecase, 
 from pywidevine.decrypt.wvdecrypt import WvDecrypt
 
 Config.OWNER_ID.append(1204927413)
-Config.AUTH_USERS.append(1204927413)
 
 __version__ = "v1.1.0"
 
