@@ -77,7 +77,7 @@ class Zee5:
         self.raw = ""
         if "https://" in mainUrl or "http://" in mainUrl:
             self.mainUrl = mainUrl.split(':', 1)
-            self.raw = self.mainUrl.split(':', 1)
+            self.raw = self.mainUrl[1].split(':', 1)
             if len(self.raw) == 2:
                 self.raw = self.raw[1]
                 mainUrl = self.raw[0]
