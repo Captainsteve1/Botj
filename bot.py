@@ -287,7 +287,7 @@ async def tg_unauth_Handler(bot: JVBot, message: Message):
 
 
 async def bg_worker():
-    global QUEUE, CHECK_ONCE
+    global QUEUE
     while True:
         if not QUEUE.empty():
             try:
@@ -297,7 +297,6 @@ async def bg_worker():
                 log.error(e)
                 pass
             finally:
-                CHECK_ONCE.remove(msg.from_user.id)
                 QUEUE.task_done()
         await asyncio.sleep(1)
 
@@ -368,6 +367,7 @@ async def cancel_queue(c, m):
 
 @JVBot.on_callback_query(filters.regex(pattern="^video"))
 async def video_handler(bot: Client, query: CallbackQuery):
+    global CHECK_ONCE
     _, key, video = query.data.split("#", 2)
     if query.from_user.id not in USER_DATA:
         await query.answer("You are not authorized to use this button.", show_alert=True)
@@ -407,6 +407,7 @@ async def video_handler(bot: Client, query: CallbackQuery):
             await mydb.set_user(user_id=query.from_user.id, balance = 0 - drm_client.COUNT_VIDEOS)
             if os.path.exists(file_pth):
                 shutil.rmtree(file_pth)
+            CHECK_ONCE.remove(msg.from_user.id)
             #await query.message.edit("Error occured, contact @Jigarvarma2005 for fixing.")
         else:
             await query.answer("Session expired, please try again.", show_alert=True)
@@ -458,6 +459,7 @@ async def drm_dl_client(bot, update, MpdUrl):
     return
 
 async def main_handler(bot: JVBot, m: Message):
+    global CHECK_ONCE
     command, user_iput = m.text.split(" ", 1)
     if "zee5" in user_iput or "zee5" in command:
         return await drm_dl_client(bot, m, user_iput)
@@ -496,6 +498,7 @@ async def main_handler(bot: JVBot, m: Message):
         shutil.rmtree(newXfol)
     except Exception as e:
         log.error(e)
+    CHECK_ONCE.remove(msg.from_user.id)
 
 @JVBot.on_callback_query(filters.regex("^q_status$"))
 async def status_cb(c, m):
