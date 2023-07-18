@@ -17,7 +17,7 @@ from logging.handlers import RotatingFileHandler
 from expiringdict import ExpiringDict
 from time import time
 import random
-from uvloop import install
+#from uvloop import install
 from urllib.parse import quote
 
 # the logging things
@@ -573,7 +573,7 @@ async def tg_s_Handler(bot: JVBot, message: Message):
         await sts.edit('Executed')
 
 async def StartBot():
-    install()
+    #install()
     print("--------@Jigarvarma2005--------")
     await JVBot.start()
     print("----------Bot Started----------")
