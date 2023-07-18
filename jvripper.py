@@ -79,8 +79,8 @@ class Zee5:
             mainUrl = mainUrl.split(':', 1)
             self.raw = mainUrl[1].split(':', 1)
             if len(self.raw) == 2:
-                self.raw = self.raw[1]
                 mainUrl = self.raw[0]
+                self.raw = self.raw[1]
             else:
                 self.raw = ""
                 mainUrl = self.raw[0]
