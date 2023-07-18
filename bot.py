@@ -20,8 +20,6 @@ import random
 from uvloop import install
 from urllib.parse import quote
 
-install()
-
 # the logging things
 logging.basicConfig(
     level=logging.INFO,
@@ -572,6 +570,7 @@ async def tg_s_Handler(bot: JVBot, message: Message):
         await sts.edit('Executed')
 
 async def StartBot():
+    install()
     print("--------@Jigarvarma2005--------")
     await JVBot.start()
     print("----------Bot Started----------")
