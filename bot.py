@@ -407,7 +407,7 @@ async def video_handler(bot: Client, query: CallbackQuery):
             await mydb.set_user(user_id=query.from_user.id, balance = 0 - drm_client.COUNT_VIDEOS)
             if os.path.exists(file_pth):
                 shutil.rmtree(file_pth)
-            CHECK_ONCE.remove(msg.from_user.id)
+            CHECK_ONCE.remove(query.from_user.id)
             #await query.message.edit("Error occured, contact @Jigarvarma2005 for fixing.")
         else:
             await query.answer("Session expired, please try again.", show_alert=True)
@@ -498,7 +498,7 @@ async def main_handler(bot: JVBot, m: Message):
         shutil.rmtree(newXfol)
     except Exception as e:
         log.error(e)
-    CHECK_ONCE.remove(msg.from_user.id)
+    CHECK_ONCE.remove(m.from_user.id)
 
 @JVBot.on_callback_query(filters.regex("^q_status$"))
 async def status_cb(c, m):
