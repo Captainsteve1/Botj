@@ -12,7 +12,15 @@ class manage_db():
             self.user = self.db.users
         except Exception as e:
             self.user = None
-    
+            
+    async def get_all_users(self):
+        all_users = self.col.find({})
+        return all_users
+  
+    async def total_users_count(self):
+        count = await self.col.count_documents({})
+        return count
+        
     async def set_user(self, user_id, expiry=0, balance=0):
         start_date = datetime.now()
         try:
