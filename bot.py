@@ -107,7 +107,48 @@ Contact owner for updating subscription. """
     else:
         msg = "No Subscription found...\n\ncheck /plans to get your subscription now..."
     return msg
-
+@JVBot.on_message(filters.command(["b", "broad"]) & static_auth_filter)
+async def broadcasthandler(bot: Client, message: Message):
+    try:
+        await message.reply_text("broadcast request recived, you will be notified once broadcast done", quote=True)
+        some_users = await mydb.get_all_users()
+        total_users = await mydb.total_users_count()
+        broadcast_msg = message.reply_to_message
+        broadcast_filename = "".join([random.choice(string.ascii_letters) for i in range(5)])
+        broadcast_log = ""
+        done = 0
+        failed = 0
+        success = 0
+        log_file = io.BytesIO()
+        log_file.name = f"broadcast_{broadcast_filename}.txt"
+        async for user in some_users:
+            sts, msg = await send_msg(
+                user_id = user['_id'],
+                message = broadcast_msg
+            )
+            if msg is not None:
+                broadcast_log += msg
+            if sts == 200:
+                success += 1
+            else:
+                failed += 1
+            done += 1
+        log_file.write(broadcast_log.encode())
+        if failed == 0:
+            await message.reply_text(
+            text=f"Broadcast completed`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.",
+            quote=True,
+        )
+        else:
+            await message.reply_document(
+            document=log_file,
+            caption=f"Broadcast completed\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.",
+            quote=True,
+        )
+    except Exception as erro:
+        LOGGER.exception(erro)
+        pass
+        
 @JVBot.on_message(filters.command(["status", "stats"]) & static_auth_filter)
 async def status_msg(bot, update):
   currentTime = strftime("%H:%M:%S", gmtime(time() - BOT_START_TIME)) 
