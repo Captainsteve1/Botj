@@ -10,6 +10,7 @@ class manage_db():
         try:
             self.db = motor.motor_asyncio.AsyncIOMotorClient(Config.DB_URL, tlsCAFile=ca)["JVAmazonDl"]
             self.user = self.db.users
+            self.col = self.db.members
         except Exception as e:
             self.user = None
             
