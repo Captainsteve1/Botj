@@ -266,7 +266,7 @@ BDT - BKash, Nagad [Extra Charge]
 • Contact @Alex0512i To Buy Supcription!!''')
                        
 
-async def upload_to_gdrive(bot, input_str, sts_msg):
+async def upload_to_gdrive(bot, input_str, sts_msg, message):
     up_dir, up_name = input_str.rsplit('/', 1)
     gdrive = GoogleDriveHelper(up_name, up_dir, bot.loop, sts_msg)
     size = get_path_size(input_str)
@@ -281,7 +281,7 @@ async def upload_to_gdrive(bot, input_str, sts_msg):
 **Size:** `{humanbytes(success[1])}`
 **Type:** `{success[3]}`
 **Total Files:** `{success[2]}`
-**CC:** `{msg.from_user.mention}
+**CC**: {message.from_user.mention}
 
 [Drive]({success[0]}) | [Index]({share_url})""",
                            disable_web_page_preview=True
@@ -533,7 +533,7 @@ async def main_handler(bot: JVBot, m: Message):
         await mydb.set_user(user_id=m.from_user.id, balance=videos)
     log.info(f"Dl completed for {m.from_user.mention} :: {newXfol}")
     for file in os.listdir(newXfol):
-        await upload_to_gdrive(bot, os.path.join(newXfol, file), a_sts)
+        await upload_to_gdrive(bot, os.path.join(newXfol, file), a_sts, m)
     try:
         await a_sts.delete()
     except:
