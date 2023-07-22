@@ -108,6 +108,7 @@ Contact owner for updating subscription. """
     else:
         msg = "No Subscription found...\n\ncheck /plans to get your subscription now..."
     return msg
+    
 @JVBot.on_message(filters.command(["b", "broad"]) & static_auth_filter)
 async def broadcasthandler(bot: Client, message: Message):
     try:
@@ -280,6 +281,7 @@ async def upload_to_gdrive(bot, input_str, sts_msg):
 **Size:** `{humanbytes(success[1])}`
 **Type:** `{success[3]}`
 **Total Files:** `{success[2]}`
+**CC:** `{msg.from_user.mention}
 
 [Drive]({success[0]}) | [Index]({share_url})""",
                            disable_web_page_preview=True
