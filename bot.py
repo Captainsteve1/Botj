@@ -146,7 +146,7 @@ async def broadcasthandler(bot: Client, message: Message):
             quote=True,
         )
     except Exception as erro:
-        LOGGER.exception(erro)
+        log.exception(erro)
         pass
         
 @JVBot.on_message(filters.command(["status", "stats"]) & static_auth_filter)
