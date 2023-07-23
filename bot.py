@@ -353,7 +353,7 @@ async def checkUserQueue(userId):
             return i
     return False
 
-@JVBot.on_message(filters.command(["pv", "zee5", "nf"], prefixes=[".", "/", "#","~"]) & static_auth_filter)
+@JVBot.on_message(filters.command(["pv", "zee5"], prefixes=[".", "/", "#","~"]) & static_auth_filter)
 async def queue_handler(bot, message):
     global task, QUEUE, CHECK_ONCE
     try:
@@ -443,7 +443,7 @@ async def video_handler(bot: Client, query: CallbackQuery):
             except:
                 sts = await query.message.reply_text(f"Please wait starting **gdrive** upload of `{jvname}`")
             for fileP in os.listdir(file_pth):
-                await upload_to_gdrive(bot, os.path.join(file_pth, fileP), sts)
+                await upload_to_gdrive(bot, os.path.join(file_pth, fileP), sts, m)
             try:
                 await sts.delete()
             except:
