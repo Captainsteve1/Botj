@@ -140,7 +140,7 @@ class JioCinema:
         await downloader.download(video, audios)
         await downloader.no_decrypt()
         await self.edit(f"**Muxing:** `{self.title}`")
-        await downloader.merge(self.title + " ({self.year})", type_="JioCinema")
+        await downloader.merge(self.title + f" ({self.year})", type_="JioCinema")
 
     async def edit(self, text):
         try:
