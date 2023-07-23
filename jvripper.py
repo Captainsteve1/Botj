@@ -78,7 +78,7 @@ def ReplaceDontLikeWord(X):
 class JioCinema:
     def __init__(self, url, output):
         self.url = url
-        self.filedir = output
+        self.filedir = os.path.join(Config.TEMP_DIR, output)
         if not os.path.exists(self.filedir):
             os.makedirs(self.filedir, exist_ok=True)
         self.mpd()
