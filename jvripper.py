@@ -1,3 +1,5 @@
+# For educational purposes only
+# Use at your own risk
 
 import time
 import os
@@ -10,6 +12,7 @@ import json
 import sys
 import logging
 from config import Config
+import yt_dlp as ytdl
 import xmltodict, shutil, os, json, time, base64, requests, sys, re, titlecase, unidecode, itertools
 from pywidevine.decrypt.wvdecrypt import WvDecrypt
 
@@ -71,6 +74,222 @@ def ReplaceDontLikeWord(X):
             replace("?","").encode('latin-1').decode('latin-1')
     
     return titlecase.titlecase(X)
+
+class JioCinema:
+    def __init__(self, url, output):
+        self.url = url
+        self.filedir = output
+        if not os.path.exists(self.filedir):
+            os.makedirs(self.filedir, exist_ok=True)
+        self.mpd()
+
+    def is_valid_url(self, url):
+        try:
+            response = requests.get(url)
+            return response.status_code == 200
+        except requests.exceptions.RequestException:
+            return False
+    
+    async def get_audios_ids(self, key=None):
+        """Return list of all available audio streams"""
+        list_of_audios = []
+        if key:
+            list_of_audios.append(key)
+        for x in self.data["audios"]:
+            list_of_audios.append(x["lang"])
+        return list_of_audios
+
+    async def get_videos_ids(self):
+        list_of_videos = []
+        for x in self.data["videos"]:
+            list_of_videos.append(x["height"])
+        return list_of_videos
+    
+    async def get_input_data(self):
+        """It will extract all the data from link"""
+        try:
+            yt_data = ytdl.YoutubeDL(
+                                     {'no-playlist': True, "geo_bypass_country": "IN", "allow_unplayable_formats": True}).extract_info(
+                                     self.mpd_url,
+                                     download=False)
+            formats = yt_data.get('formats', None)
+            self.data = {}
+            self.data["videos"] = []
+            self.data["videos"] = []
+            if formats:
+                for i in formats:
+                    format_id = i.get('format_id', '')
+                    format = i.get('format', '')
+                    if "audio" in format:
+                        self.data["audios"].append({"lang": i.get("language", "default"), "id": format_id})
+                    if "video" in format:
+                        self.data["videos"].append({"height": str(i.get("height", "default")), "id": format_id})
+            return self.title
+        except:
+            raise Exception("Error in getting data")
+    
+    async def downloader(self, video, audios, msg=None):
+        if not os.path.isdir(self.filedir):
+            os.makedirs(self.filedir, exist_ok=True)
+        self.msg = msg
+        self.COUNT_VIDEOS = 1
+        OUTPUT = os.path.join(self.filedir, self.title)
+        downloader = Downloader(self.mpd_url, OUTPUT)
+        await downloader.set_data(self.data)
+        await self.edit(f"**Downloading:** `{self.title}`")
+        await downloader.download(video, audios)
+        await self.edit(f"**Muxing:** `{self.title}`")
+        await downloader.merge(self.title + " ({self.year})", type_="JioCinema")
+
+    async def edit(self, text):
+        try:
+            await self.msg.edit(text)
+        except:
+            pass
+
+    def get_mpd(self, id_):
+        headers = {
+            'authority': 'auth-jiocinema.voot.com',
+            'accept': 'application/json, text/plain, */*',
+            'accept-language': 'en-US,en;q=0.9',
+            'content-type': 'application/json',
+            'origin': 'https://www.jiocinema.com',
+            'referer': 'https://www.jiocinema.com/',
+            'sec-ch-ua': '"Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"',
+            'sec-ch-ua-mobile': '?0',
+            'sec-ch-ua-platform': '"Windows"',
+            'sec-fetch-dest': 'empty',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-site': 'cross-site',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+        }
+
+        json_data = {
+            'appName': 'RJIL_JioCinema',
+            'deviceType': 'phone',
+            'os': 'ios',
+            'deviceId': '1552579968',
+            'freshLaunch': False,
+            'adId': '1552579968',
+            'appVersion': '5.1.1',
+        }
+
+        r = requests.post('https://auth-jiocinema.voot.com/tokenservice/apis/v4/guest',
+                        headers=headers, json=json_data)
+        auth = r.json()["authToken"]
+        headers = {
+            'deviceid': '4123858484',
+            'accesstoken': f'{auth}',
+            'sec-ch-ua': '"Not:A-Brand";v="99", "Chromium";v="112"',
+            'versioncode': '422',
+            'uniqueid': '1fd16050-3381-4c24-a53f-6719f8d68827',
+            'sec-ch-ua-mobile': '?1',
+            'x-platform': 'androidweb',
+            'User-Agent': 'Mozilla/5.0 (Linux; Android 12; M2101K7BI) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36',
+            'Content-Type': 'application/json',
+            'Accept': 'application/json, text/plain, */*',
+            'Referer': 'https://www.jiocinema.com/',
+            'x-apisignatures': 'o668nxgzwff',
+            'x-platform-token': 'web',
+            'appname': 'RJIL_JioCinema',
+            'sec-ch-ua-platform': '"Android"',
+        }
+        json_data = {
+            '4k': False,
+            'ageGroup': '18+',
+            'appVersion': '3.4.0',
+            'bitrateProfile': 'xhdpi',
+            'capability': {
+                'drmCapability': {
+                    'aesSupport': 'yes',
+                    'fairPlayDrmSupport': 'yes',
+                    'playreadyDrmSupport': 'none',
+                    'widevineDRMSupport': 'yes',
+                },
+                'frameRateCapability': [
+                    {
+                        'frameRateSupport': '30fps',
+                        'videoQuality': '1440p',
+                    },
+                ],
+            },
+            'continueWatchingRequired': False,
+            'dolby': False,
+            'downloadRequest': False,
+            'hevc': False,
+            'kidsSafe': False,
+            'manufacturer': 'Windows',
+            'model': 'Windows',
+            'multiAudioRequired': True,
+            'osVersion': '10',
+            'parentalPinValid': True,
+            'x-apisignatures': 'o668nxgzwff',
+        }
+        res = requests.post(
+            f'https://apis-jiovoot.voot.com/playbackjv/v3/{id_}', headers=headers, json=json_data)
+        try:
+            mpdurl = res.json()["data"]["playbackUrls"][0]["url"]
+            return mpdurl
+        except Exception as e:
+            print(res.json())
+            raise e
+
+
+    def mpd(self):
+        id_ = self.url.split('/')[-1]
+        headers = {
+            'authority': 'content-jiovoot.voot.com',
+            'accept': 'application/json, text/plain, */*',
+            'accept-language': 'en-US,en;q=0.9',
+            'origin': 'https://www.jiocinema.com',
+            'referer': 'https://www.jiocinema.com/',
+            'sec-ch-ua': '"Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"',
+            'sec-ch-ua-mobile': '?0',
+            'sec-ch-ua-platform': '"Windows"',
+            'sec-fetch-dest': 'empty',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-site': 'cross-site',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36',
+        }
+
+        res = requests.get(
+            f'https://content-jiovoot.voot.com/psapi/voot/v1/voot-web//content/query/asset-details?&ids=include:{id_}&responseType=common&devicePlatformType=desktop',
+            headers=headers,
+        )
+        entid = res.json()['result'][0]["externalId"]
+        self.title = res.json()['result'][0]['name']  # .split(" ")
+        self.title = ReplaceDontLikeWord(unidecode.unidecode(self.title))
+        #  title = " ".join(tit)
+        self.year = res.json()['result'][0]["releaseYear"]
+        mpdu = self.get_mpd(id_)
+        par = mpdu.split("?")[1]
+        headers = {
+            'sec-ch-ua': '"Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"',
+            'Referer': 'https://www.jiocinema.com/',
+            'sec-ch-ua-mobile': '?0',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+            'sec-ch-ua-platform': '"Windows"',
+        }
+        try:
+            vmpd_url = f'https://jiostreamingdash.akamaized.net/bpkvod/vod/default/{entid}/{entid}/index_jc_web_premium.mpd?{par}'
+            for i in range(1, 20):
+                vmpd_url = f'https://jiostreamingdash.akamaized.net/bpkvod/vod/default/{entid}_v{i}/{entid}_v{i}/index_jc_androidtv_premium.mpd?{par}'
+                if self.is_valid_url(vmpd_url):
+                    r = requests.get(url=vmpd_url)
+                    r.raise_for_status()
+                    break
+            else:
+                vmpd_url = f'https://jiostreamingdash.akamaized.net/bpkvod/vod/default/{entid}/{entid}/index_jc_mobile_premium.mpd?{par}'
+                r = requests.get(url=vmpd_url)
+                r.raise_for_status()
+        except requests.exceptions.RequestException:
+            vmpd_url = f'https://jiostreamingdash.akamaized.net/bpkvod/vod/default/{entid}/{entid}/index_jc_mobile_premium.mpd?{par}'
+
+            r = requests.get(url=vmpd_url)
+            r.raise_for_status()
+        except Exception as e:
+            raise e
+        self.mpd_url = vmpd_url
 
 class Zee5:
     def __init__(self, mainUrl, filedir):
@@ -321,8 +540,8 @@ class Zee5:
         mpdUrl, title, drmdata, nl = tempData
         self.MpdDATA = await self.parsempd(mpdUrl)
         #logging.info(self.MpdDATA)
-        self.audios = await self.get_audios_ids()
-        self.videos = await self.get_videos_ids()
+        #self.audios = await self.get_audios_ids()
+        #self.videos = await self.get_videos_ids()
         return title if seriesname is None else title
 
     async def get_audios_ids(self, key=None):
@@ -424,7 +643,6 @@ class Downloader:
         """Download video with format id and download all audio streams"""
         if self.all_data:
             try:
-                list_of_func = []
                 x = None
                 for x in self.all_data["videos"]:
                     if x["height"] == quality:
@@ -434,8 +652,8 @@ class Downloader:
                     raise Exception("Quality not found")
                 self.quality = quality
                 self.selected_audios = audio_list
-                my_video = os.path.join(self.TempPath, "jv_drm_video_" + '.mkv')
-                video_download_cmd = ["yt-dlp", "--allow-unplayable-formats", "--format", x, self.__url,  "--geo-bypass-country", "IN", "--external-downloader", "aria2c", "-o", my_video]
+                self.video_file = os.path.join(self.TempPath, "jv_drm_video_" + '.mkv')
+                video_download_cmd = ["yt-dlp", "--allow-unplayable-formats", "--format", x, self.__url,  "--geo-bypass-country", "IN", "--external-downloader", "aria2c", "-o",  self.video_file]
                 if msg != None:
                     await msg.edit("`Downloading all streams ...`")
                 await downloadaudiocli(video_download_cmd)
@@ -456,11 +674,12 @@ class Downloader:
                         except Exception as e:
                             self.log.exception(e)
                             continue
-                for sub in self.all_data["subtitles"]:
-                    my_sub = os.path.join(self.TempPath, sub["lang"] + '.vtt')
-                    sub_download_cmd = ["yt-dlp", "--allow-unplayable-formats", "--write-sub", "--sub-lang", sub["lang"], "--skip-download", self.__url,  "--geo-bypass-country", "IN", "-o", my_sub]
-                    await downloadaudiocli(sub_download_cmd) # Download subtitles
-                    os.rename(os.path.join(self.TempPath, f'{sub["lang"]}.vtt' + f'.{sub["lang"]}.vtt'), my_sub)
+                #if "subtitles" in self.all_data:
+                #    for sub in self.all_data["subtitles"]:
+                #        my_sub = os.path.join(self.TempPath, sub["lang"] + '.vtt')
+                #        sub_download_cmd = ["yt-dlp", "--allow-unplayable-formats", "--write-sub", "--sub-lang", sub["lang"], "--skip-download", self.__url,  "--geo-bypass-country", "IN", "-o", my_sub]
+                #        await downloadaudiocli(sub_download_cmd) # Download subtitles
+                #        os.rename(os.path.join(self.TempPath, f'{sub["lang"]}.vtt' + f'.{sub["lang"]}.vtt'), my_sub)
                 return 0
             except Exception as e:
                 self.log.exception(e)
@@ -487,13 +706,13 @@ class Downloader:
             os.remove(old_path)
         self.downloaded_audios = temp_audios
     
-    async def merge(self, output_filename):
+    async def merge(self, output_filename, type_="ZEE5"):
         """Merge all downloaded stream"""
         if len(self.selected_audios) > 4:
             FORM_DICT = LANGUAGE_FULL_FORM
         else:
             FORM_DICT = LANGUAGE_SHORT_FORM
-        out_file = f"{output_filename} {self.quality}p ZEE5 WEB-DL x264 [{' + '.join(FORM_DICT.get(x.lower(), x.capitalize()) for x in self.selected_audios)} (AAC 2.0)] Esub_ROBOT_.mkv"
+        out_file = f"{output_filename} {self.quality}p {type_} WEB-DL x264 [{' + '.join(FORM_DICT.get(x.lower(), x.capitalize()) for x in self.selected_audios)} (AAC 2.0)] Esub_ROBOT_.mkv"
         out_path = os.path.join(self.out_path, out_file)
         video_path = self.video_file
         cmd = f'ffmpeg -i "{video_path}" '
