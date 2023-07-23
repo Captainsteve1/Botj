@@ -410,7 +410,7 @@ async def cancel_queue(c, m):
         await m.message.edit("Your task already removed from queue")
 
 @JVBot.on_callback_query(filters.regex(pattern="^video"))
-async def video_handler(bot: Client, query: CallbackQuery):
+async def video_handler(bot: Client, query: CallbackQuery, m: Message):
     global CHECK_ONCE
     _, key, video = query.data.split("#", 2)
     if query.from_user.id not in USER_DATA:
