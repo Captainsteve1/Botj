@@ -115,7 +115,7 @@ class JioCinema:
             formats = yt_data.get('formats', None)
             self.data = {}
             self.data["videos"] = []
-            self.data["videos"] = []
+            self.data["audios"] = []
             if formats:
                 for i in formats:
                     format_id = i.get('format_id', '')
