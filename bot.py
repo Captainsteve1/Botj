@@ -353,7 +353,7 @@ async def checkUserQueue(userId):
             return i
     return False
 
-@JVBot.on_message(filters.command(["pv", "zee5"], prefixes=[".", "/", "#","~"]) & static_auth_filter)
+@JVBot.on_message(filters.command(["pv", "zee5", "jc"], prefixes=[".", "/", "#","~"]) & static_auth_filter)
 async def queue_handler(bot, message):
     global task, QUEUE, CHECK_ONCE
     try:
@@ -487,7 +487,10 @@ async def audio_handler(bot: Client, query: CallbackQuery):
 
 async def drm_dl_client(bot, update, MpdUrl):
     user_fol = str(time())
-    drm_client: Zee5 = Zee5(MpdUrl, user_fol)
+    if "jiovoot" in MpdUrl:
+        drm_client: JioCinema = JioCinema(MpdUrl, user_fol)
+    else:
+        drm_client: Zee5 = Zee5(MpdUrl, user_fol)
     title = await drm_client.get_input_data()
     randStr = ''.join(random.choices(string.ascii_uppercase + string.digits, k = 5))
     #passing the randStr to use it as a key for the USER_DATA dict
@@ -505,7 +508,7 @@ async def drm_dl_client(bot, update, MpdUrl):
 async def main_handler(bot: JVBot, m: Message):
     global CHECK_ONCE
     command, user_iput = m.text.split(" ", 1)
-    if "zee5" in user_iput or "zee5" in command:
+    if "zee5" in user_iput or "zee5" in command or "jc" in command or "jiovoot" in user_iput:
         return await drm_dl_client(bot, m, user_iput)
     cmd = "python3.9 wvripper.py " + user_iput
     log.info("Dl request from:" + str(m.from_user.id) + "::" + cmd)
