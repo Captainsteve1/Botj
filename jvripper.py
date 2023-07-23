@@ -138,6 +138,7 @@ class JioCinema:
         await downloader.set_data(self.data)
         await self.edit(f"**Downloading:** `{self.title}`")
         await downloader.download(video, audios)
+        await downloader.no_decrypt()
         await self.edit(f"**Muxing:** `{self.title}`")
         await downloader.merge(self.title + " ({self.year})", type_="JioCinema")
 
@@ -654,8 +655,6 @@ class Downloader:
                 self.selected_audios = audio_list
                 self.video_file = os.path.join(self.TempPath, "jv_drm_video_" + '.mkv')
                 video_download_cmd = ["yt-dlp", "--allow-unplayable-formats", "--format", x, self.__url,  "--geo-bypass-country", "IN", "--external-downloader", "aria2c", "-o",  self.video_file]
-                if msg != None:
-                    await msg.edit("`Downloading all streams ...`")
                 await downloadaudiocli(video_download_cmd)
                 if audio_list:
                     for audi in audio_list:
@@ -705,7 +704,22 @@ class Downloader:
             self.log.info(st + stout)
             os.remove(old_path)
         self.downloaded_audios = temp_audios
-    
+
+    async def no_decrypt(self):
+        """set all non-drm downloaded streams"""
+        all_files = self.downloaded_audios + [x for x in os.listdir(self.TempPath) if x.upper().endswith(self.VIDEO_SUFFIXES)]
+        temp_audios = []
+        for my_file in all_files:
+            old_path = os.path.join(os.getcwd(), self.TempPath, my_file)
+            new_path = os.path.join(os.getcwd(), self.TempPath, my_file.replace(" ", "_").rsplit("_", 1)[0].rsplit(".", 1)[0].replace(".", "_") + "_jv.mp4")
+            if old_path.upper().endswith(self.VIDEO_SUFFIXES):
+                self.video_file = new_path
+            else:
+                temp_audios.append(new_path)
+            cmd = "mp4decrypt"
+            os.rename(old_path, new_path)
+        self.downloaded_audios = temp_audios
+
     async def merge(self, output_filename, type_="ZEE5"):
         """Merge all downloaded stream"""
         if len(self.selected_audios) > 4:
