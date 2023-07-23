@@ -485,9 +485,9 @@ async def audio_handler(bot: Client, query: CallbackQuery):
             markup = MakeCaptchaMarkup(query.message.reply_markup.inline_keyboard, query.data, f"{LANGUAGE_FULL_FORM.get(audio.lower(), audio)}")
         await query.message.edit_reply_markup(InlineKeyboardMarkup(markup))
 
-async def drm_dl_client(bot, update, MpdUrl):
+async def drm_dl_client(bot, update, MpdUrl, command):
     user_fol = str(time())
-    if "jiovoot" in MpdUrl:
+    if "jiovoot" in MpdUrl or "jc" in command:
         drm_client: JioCinema = JioCinema(MpdUrl, user_fol)
     else:
         drm_client: Zee5 = Zee5(MpdUrl, user_fol)
@@ -509,7 +509,7 @@ async def main_handler(bot: JVBot, m: Message):
     global CHECK_ONCE
     command, user_iput = m.text.split(" ", 1)
     if "zee5" in user_iput or "zee5" in command or "jc" in command or "jiovoot" in user_iput:
-        return await drm_dl_client(bot, m, user_iput)
+        return await drm_dl_client(bot, m, user_iput, command)
     cmd = "python3.9 wvripper.py " + user_iput
     log.info("Dl request from:" + str(m.from_user.id) + "::" + cmd)
     Xfol = f"{m.from_user.id}t_{time()}"
