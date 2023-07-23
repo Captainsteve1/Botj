@@ -410,7 +410,7 @@ async def cancel_queue(c, m):
         await m.message.edit("Your task already removed from queue")
 
 @JVBot.on_callback_query(filters.regex(pattern="^video"))
-async def video_handler(bot: Client, query: CallbackQuery, m: Message):
+async def video_handler(bot: Client, query: CallbackQuery):
     global CHECK_ONCE
     _, key, video = query.data.split("#", 2)
     if query.from_user.id not in USER_DATA:
@@ -443,7 +443,7 @@ async def video_handler(bot: Client, query: CallbackQuery, m: Message):
             except:
                 sts = await query.message.reply_text(f"Please wait starting **gdrive** upload of `{jvname}`")
             for fileP in os.listdir(file_pth):
-                await upload_to_gdrive(bot, os.path.join(file_pth, fileP), sts, m)
+                await upload_to_gdrive(bot, os.path.join(file_pth, fileP), sts, sts)
             try:
                 await sts.delete()
             except:
